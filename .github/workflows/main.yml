@@ -1,0 +1,2 @@
+- name: Hugo to GH Pages
+  uses: chabad360/hugo-gh-pages@v1
