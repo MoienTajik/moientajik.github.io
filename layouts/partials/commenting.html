@@ -1,9 +1,0 @@
-<!-- Disqus-->
-{{ if .Site.DisqusShortname -}}
-    {{ if ne .Params.showcomments false }}
-        <h2 {{ if .Site.Params.Rtl }}dir="rtl"{{ end }}>نظرات</h2>
-        {{ partial "commenting_disqus.html" . }}
-    {{ end }}  
-{{ else if .Site.Params.GraphCommentId -}}
-    {{ partial "commenting_graph.html" . }}
-{{- end }}
