@@ -1,5 +1,4 @@
-name: github pages
-
+name: MoienTajik
 on:
   push:
     branches:
