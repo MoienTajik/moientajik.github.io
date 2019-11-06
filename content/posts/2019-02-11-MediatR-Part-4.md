@@ -1,9 +1,9 @@
 ---
 title: پیاده سازی CQRS توسط MediatR - قسمت چهارم
 tags: ["MediatR", "Mediator", "DesignPatterns", "CQRS", "EventSourcing"]
-date: "2019-11-06T23:00:00+03:30"
+date: "2019-02-11T00:00:00+03:30"
 description: "در این سری مقالات به پیاده سازی الگوی طراحی CQRS توسط کتابخانه MediatR میپردازیم."
-imageUrl: "/img/posts/2019-11-06-MediatR-Part-4/dry.png"
+imageUrl: "/img/posts/2019-02-11-MediatR-Part-4/dry.png"
 weight: 1
 ---
 
@@ -49,7 +49,7 @@ public class SomeClass
   
 علاوه بر این تصور کنید روزی تصمیم بگیرید که حداکثر زمان برای Log کردن را از 5 ثانیه به 10 ثانیه تغییر دهید. در این صورت بدلیل اینکه در همه متدها این قطعه کد تکرار شده‌است، مجبور به تغییر تمام کدهای برنامه برای اصلاح این بخش خواهید شد. در اینجا اصل  [DRY](https://deviq.com/don-t-repeat-yourself/) نقض شده‌است.  
   
-<img src="/img/posts/2019-11-06-MediatR-Part-4/dry.png" alt="DRY" width="400px" style="margin:auto;">
+<img src="/img/posts/2019-02-11-MediatR-Part-4/dry.png" alt="DRY" width="400px" style="margin:auto;">
 <br>
   
 برای حل این مشکل از Behavior‌ها استفاده میکنیم. برای پیاده سازی Behavior‌ها داخل MediatR، کافیست از interface ای بنام IPipelineBehavior ارث بری کنیم:
@@ -127,7 +127,7 @@ public class GetCustomerByIdQueryHandler : IRequestHandler<GetCustomerByIdQuery,
 
 پس از اجرای برنامه و فراخوانی GetCustomerById ، داخل Console این پیغام را خواهید دید:  
 
-<img src="/img/posts/2019-11-06-MediatR-Part-4/delay.png" alt="Delay" style="margin:auto;">
+<img src="/img/posts/2019-02-11-MediatR-Part-4/delay.png" alt="Delay" style="margin:auto;">
 <br>
 
 ----------
@@ -136,7 +136,7 @@ public class GetCustomerByIdQueryHandler : IRequestHandler<GetCustomerByIdQuery,
 
 <br>
 
-<img src="/img/posts/2019-11-06-MediatR-Part-4/rollback.png" alt="Rollback" width="400px" style="margin:auto;">
+<img src="/img/posts/2019-02-11-MediatR-Part-4/rollback.png" alt="Rollback" width="400px" style="margin:auto;">
 <br>
   
 یکی دیگر از استفاده‌های Behavior‌ها میتواند پیاده سازی Transaction و Rollback باشد. فرض کنید میخواهیم افزودن یک مشتری به دیتابیس فقط زمانی صورت گیرد که تمام کارهای داخل Command با موفقیت و بدون رخ دادن Exception انجام شود. برای انجام اینکار میتوان یک TransactionBehavior نوشت تا بدنه Command‌ها را داخل یک TransactionScope قرار دهد و در صورت وقوع Exception ، عمل Rollback صورت گیرد :

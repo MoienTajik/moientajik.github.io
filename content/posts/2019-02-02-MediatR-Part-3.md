@@ -1,17 +1,17 @@
 ---
 title: پیاده سازی CQRS توسط MediatR - قسمت سوم
 tags: ["MediatR", "Mediator", "DesignPatterns", "CQRS", "EventSourcing"]
-date: "2019-11-06T22:00:00+03:30"
+date: "2019-02-02T00:00:00+03:30"
 description: "در این سری مقالات به پیاده سازی الگوی طراحی CQRS توسط کتابخانه MediatR میپردازیم."
-imageUrl: "/img/posts/2019-11-06-MediatR-Part-3/PubSub.jpg"
+imageUrl: "/img/posts/2019-02-02-MediatR-Part-3/PubSub.jpg"
 weight: 1
 ---
 
-در [قسمت قبلی](https://moien.dev/posts/2019-11-06-mediatr-part-2) روش استفاده از IRequest و IRequestHandler را در MediatR که نقش پیاده سازی Command/Query را در CQRS بر عهده دارند، بررسی کردیم. کدهای این قسمت در این [ریپازیتوری](https://github.com/MoienTajik/MediatrTutorial) به‌روزرسانی شده و قابل دسترسی است.
+در [قسمت قبلی](https://moien.dev/posts/2019-01-27-mediatr-part-2) روش استفاده از IRequest و IRequestHandler را در MediatR که نقش پیاده سازی Command/Query را در CQRS بر عهده دارند، بررسی کردیم. کدهای این قسمت در این [ریپازیتوری](https://github.com/MoienTajik/MediatrTutorial) به‌روزرسانی شده و قابل دسترسی است.
 
 ----------
 
-<img src="/img/posts/2019-11-06-MediatR-Part-3/FluentValidation.jpg" alt="Fluent Validation" width="270" style="margin:auto;">
+<img src="/img/posts/2019-02-02-MediatR-Part-3/FluentValidation.jpg" alt="Fluent Validation" width="270" style="margin:auto;">
 <br>
 
 Command ما که نقش ایجاد یک مشتری را داشت ( CreateCustomerCommand ) ، هیچ Validation ای برای اعتبار سنجی مقادیر ورودی از سمت کاربر را ندارد و کاربر با هر مقادیری میتواند این Command را فراخوانی کند. در این قسمت با استفاده از کتابخانه [Fluent Validation](https://github.com/JeremySkinner/FluentValidation)  امکان اعتبار سنجی را به Command‌های خود اضافه میکنیم.  
@@ -66,7 +66,7 @@ Error: Bad Request
 
 ### Events
 
-<img src="/img/posts/2019-11-06-MediatR-Part-3/PubSub.jpg" alt="Observer Pattern" style="margin:auto;">
+<img src="/img/posts/2019-02-02-MediatR-Part-3/PubSub.jpg" alt="Observer Pattern" style="margin:auto;">
 <br>
 
 فرض کنید میخواهیم در صورت موفقیت آمیز بودن ثبت نام یک مشتری، برای او ایمیلی ارسال کنیم. فرستادن ایمیل وظیفه CreateCustomerCommand نیست و در صورت افزودن منطق ارسال ایمیل به Command، اصل [SRP](http://principles-wiki.net/principles:single_responsibility_principle) را نقض کرده‌ایم.  
@@ -130,7 +130,7 @@ public class CustomerCreatedLoggerHandler : INotificationHandler<CustomerCreated
 }
 ```
 
-در نهایت کافیست داخل CreateCustomerCommandHandler که در [قسمت قبل](https://moien.dev/posts/2019-11-06-mediatr-part-2) آن را ایجاد کردیم، متد Handle را ویرایش و با استفاده از متد Publish موجود در اینترفیس IMediator، این Event را Raise کنیم :
+در نهایت کافیست داخل CreateCustomerCommandHandler که در [قسمت قبل](https://moien.dev/posts/2019-01-27-mediatr-part-2) آن را ایجاد کردیم، متد Handle را ویرایش و با استفاده از متد Publish موجود در اینترفیس IMediator، این Event را Raise کنیم :
 
 ```csharp
 public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, CustomerDto>

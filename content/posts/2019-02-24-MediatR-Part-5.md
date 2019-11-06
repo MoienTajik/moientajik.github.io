@@ -1,9 +1,9 @@
 ---
 title: پیاده سازی CQRS توسط MediatR - قسمت پنجم
 tags: ["MediatR", "Mediator", "DesignPatterns", "CQRS", "EventSourcing"]
-date: "2019-11-06T23:20:00+03:30"
+date: "2019-02-24T00:00:00+03:30"
 description: "در این سری مقالات به پیاده سازی الگوی طراحی CQRS توسط کتابخانه MediatR میپردازیم."
-imageUrl: "/img/posts/2019-11-06-MediatR-Part-5/EventStore.png"
+imageUrl: "/img/posts/2019-02-24-MediatR-Part-5/EventStore.png"
 weight: 1
 ---
 
@@ -16,7 +16,7 @@ weight: 1
 در این قسمت قصد داریم تا اطلاعات Command‌های خود را بعد از Process، داخل یک دیتابیس Append-Only ذخیره کنیم. با استفاده از این [روش](https://martinfowler.com/eaaDev/EventSourcing.html) میتوانیم بفهمیم در یک **تاریخ مشخص**، با چه ورودی‌هایی ( Request )، چه جواب ( Response ) ای در آن لحظه از برنامه برگشت داده شده‌ است.  
 
 <br>
-<img src="/img/posts/2019-11-06-MediatR-Part-5/EventStore.png" alt="Event Store" style="margin:auto;">
+<img src="/img/posts/2019-02-24-MediatR-Part-5/EventStore.png" alt="Event Store" style="margin:auto;">
 <br>
 
 برای پیاده سازی Event Sourcing از دیتابیس  [EventStore](https://eventstore.org/) که سورس آن نیز در [گیتهاب](https://github.com/EventStore/EventStore) قابل دسترسی است، استفاده خواهیم کرد. توجه داشته باشید که شما میتوانید از دیتابیس‌های دیگری مثل Elasticsearch, Redis و ... به‌منظور دیتابیس Event Store خود استفاده کرده و محدود به EventStore نیستید.  
@@ -33,7 +33,7 @@ EventStore دارای پنل ادمینی است که از طریق http://local
 
 بعد از لاگین در پنل ادمین، با چنین Dashboard ای مواجه خواهید شد و نشان از این دارد که EventStore بدرستی اجرا شده است:
 
-<img src="/img/posts/2019-11-06-MediatR-Part-5/EventStore-Panel.png" alt="Event Store Panel" style="margin:auto;">
+<img src="/img/posts/2019-02-24-MediatR-Part-5/EventStore-Panel.png" alt="Event Store Panel" style="margin:auto;">
 
 ----------
 
@@ -81,7 +81,7 @@ services.AddSingleton<IEventStoreDbContext, EventStoreDbContext>();
   
 این یک Convention در برنامه ماست که باید رعایت شود. ( [Convention over Configuration](https://www.danylkoweb.com/Blog/aspnet-mvc-convention-over-configuration-BU) )  
 
-<img src="/img/posts/2019-11-06-MediatR-Part-5/CoC.png" alt="Convention over Configuration" width="300px" style="margin:auto;">
+<img src="/img/posts/2019-02-24-MediatR-Part-5/CoC.png" alt="Convention over Configuration" width="300px" style="margin:auto;">
 
 ----------
 
@@ -147,7 +147,7 @@ services.AddScoped(typeof(IPipelineBehavior<,>), typeof(EventLoggerBehavior<,>))
 
 اگر برنامه را اجرا و یکی از Command‌ها را مانند CreateCustomerCommand، با استفاده از api/Customers <= POST فراخوانی کنید، Request و Response شما با Type آن Command و همراه با DateTime ای که این Request رخ داده‌است، داخل EventStore ذخیره خواهد شد ، که در Admin Panel مربوط به EventStore، در تب Stream Browser قابل مشاهده است :  
 
-<img src="/img/posts/2019-11-06-MediatR-Part-5/EventStore-Panel-Stream.png" alt="Event Store Stream" style="margin:auto;">
+<img src="/img/posts/2019-02-24-MediatR-Part-5/EventStore-Panel-Stream.png" alt="Event Store Stream" style="margin:auto;">
 <br>
 
 نامگذاری این بخش به Stream، بدلیل این است که ما جریان و **تاریخچه‌ ای** از وقایع بوجود آمده در سیستم را داریم که با استفاده از آن‌ها میتوانیم به وضعیت جاری و  **نحوه** رسیدن به این State دست پیدا کنیم.
