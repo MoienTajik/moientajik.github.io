@@ -4,10 +4,14 @@ html,
 body
 {
     font-family: IRANSans !important;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 300;
     line-height: 1.5;
 	overflow-x: hidden;
+}
+
+.post {
+	line-height: 1.8;
 }
 
 .img-circle
