@@ -3,7 +3,7 @@ title: پیاده سازی CQRS توسط MediatR - قسمت سوم
 tags: ["MediatR", "Mediator", "DesignPatterns", "CQRS", "EventSourcing"]
 date: "2019-11-06T22:00:00+03:30"
 description: "در این سری مقالات به پیاده سازی الگوی طراحی CQRS توسط کتابخانه MediatR میپردازیم."
-imageUrl: "/img/posts/2019-11-06-MediatR-Part-2/Hollywood.jpg"
+imageUrl: "/img/posts/2019-11-06-MediatR-Part-3/PubSub.jpg"
 weight: 1
 ---
 
