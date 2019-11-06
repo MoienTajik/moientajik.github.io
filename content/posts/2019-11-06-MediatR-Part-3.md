@@ -7,7 +7,6 @@ imageUrl: "/img/posts/2019-11-06-MediatR-Part-3/PubSub.jpg"
 weight: 1
 ---
 
-
 در [قسمت قبلی](https://moien.dev/posts/2019-11-06-mediatr-part-2) روش استفاده از IRequest و IRequestHandler را در MediatR که نقش پیاده سازی Command/Query را در CQRS بر عهده دارند، بررسی کردیم. کدهای این قسمت در این [ریپازیتوری](https://github.com/MoienTajik/MediatrTutorial) به‌روزرسانی شده و قابل دسترسی است.
 
 ----------
@@ -22,7 +21,6 @@ Command ما که نقش ایجاد یک مشتری را داشت ( CreateCustom
 ```csharp
 Install-Package FluentValidation.AspNetCore
 ```
-
   
 بعد از افزودن این کتابخانه، باید آن را داخل DI Container خود Register کنیم:
 
@@ -30,7 +28,6 @@ Install-Package FluentValidation.AspNetCore
 services.AddMvc()
     .AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Startup>());
 ```
-
   
 کلاس جدیدی با نام CreateCustomerCommandValidator ایجاد میکنیم و از کلاس AbstractValidator مربوط به Fluent Validation ارث بری میکنیم تا منطق اعتبارسنجی برای CreateCustomerCommand را داخل آن تعریف نماییم :  
 
@@ -98,7 +95,6 @@ public class CustomerCreatedEvent : INotification
     public DateTime RegistrationDate { get; }
 }
 ```
-
   
 سپس دو Handler برای این Event مینویسیم. Handler اول وظیفه ارسال ایمیل را بر عهده دارد :
 
@@ -112,7 +108,6 @@ public class CustomerCreatedEmailSenderHandler : INotificationHandler<CustomerCr
     }
 }
 ```
-
   
 و Handler دوم، وظیفه Log کردن اطلاعات مشتری ثبت شده را بر عهده خواهد داشت:  
 
@@ -135,7 +130,6 @@ public class CustomerCreatedLoggerHandler : INotificationHandler<CustomerCreated
 }
 ```
 
-  
 در نهایت کافیست داخل CreateCustomerCommandHandler که در [قسمت قبل](https://moien.dev/posts/2019-11-06-mediatr-part-2) آن را ایجاد کردیم، متد Handle را ویرایش و با استفاده از متد Publish موجود در اینترفیس IMediator، این Event را Raise کنیم :
 
 ```csharp
