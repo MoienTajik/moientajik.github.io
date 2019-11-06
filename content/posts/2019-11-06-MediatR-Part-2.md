@@ -107,7 +107,7 @@ public class CreateCustomerCommand : IRequest<CustomerDto>
 
 در اینجا مفهوم [immutability](https://www.yegor256.com/2014/06/09/objects-should-be-immutable.html) بطور کامل رعایت شده است.
 
-![Immutability](/img/posts/2019-11-06-MediatR-Part-2/immutability.jpg)
+<img src="/img/posts/2019-11-06-MediatR-Part-2/immutability.jpg" alt="Immutability" width="600" style="margin:auto;">
 
 ----------
 
@@ -178,7 +178,7 @@ public async Task<IActionResult> CreateCustomer([FromBody] CreateCustomerCommand
   
 همانطور که میبینید ما در اینجا فقط  **درخواست** فرستاده‌ایم و وظیفه پیدا کردن Handler این درخواست را فریمورک MediatR برعهده گرفته‌است و ما هیچ جایی بطور مستقیم Handler خود را صدا نزده ایم. ( [Hollywood Principle: Don't Call Us, We Call You](http://matthewtmead.com/blog/hollywood-principle-dont-call-us-well-call-you-4/) )
 
-![Hollywood](/img/posts/2019-11-06-MediatR-Part-2/Hollywood.jpg)
+<img src="/img/posts/2019-11-06-MediatR-Part-2/Hollywood.jpg" alt="Hollywood Principle" width="300" style="margin:auto;">
 
 روند پیاده سازی Query‌ها نیز دقیقا شبیه به Command است و نمونه‌ای از آن داخل ریپازیتوری ذکر شده‌ در ابتدای مطلب وجود دارد.  
 اینترفیس IMediator علاوه بر متد Send ، دارای متد دیگری بنام Publish نیز هست که وظیفه Raise کردن Event‌ها را برعهده دارد که در مقالات بعدی از آن استفاده خواهیم کرد.  
