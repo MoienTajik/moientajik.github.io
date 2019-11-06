@@ -1,7 +1,7 @@
 ---
 title: API Versioning in ASP.NET Core
 tags: ["AspNet", "AspNetCore", "API", "Versioning"]
-date: "2018-11-09T00:00:00+03:30"
+date: "2018-11-12T00:00:00+03:30"
 description: "API Versioning in ASP.NET Core"
 imageUrl: "/img/posts/2018-11-12-AspNetCore-API-Versioning/ApiVersioning.png"
 weight: 1

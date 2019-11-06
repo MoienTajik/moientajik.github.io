@@ -2,7 +2,7 @@
 title: آشنایی با ویژگی DebuggerTypeProxy در Visual Studio
 tags: ["VisualStudio", "Debug", "Debugger"]
 date: "2018-07-05T00:00:00+03:30"
-description: "در این سری مقالات به پیاده سازی الگوی طراحی CQRS توسط کتابخانه MediatR میپردازیم."
+description: "آشنایی با ویژگی DebuggerTypeProxy در Visual Studio"
 imageUrl: "/img/posts/2018-07-05-DebuggerTypeProxy/2.png"
 weight: 1
 ---
