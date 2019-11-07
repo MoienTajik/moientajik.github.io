@@ -22,7 +22,9 @@ weight: 1
  - در صورتی که تعداد آیتم ها برابر یک باشد ، آیتم **[0]** اون Enumerable برگشت داده میشود.
  - در صورتی که تعداد آیتم ها بیشتر از یک باشد ، خطا صادر میشود.
 
-```C#
+<br>
+
+```csharp
 public static TSource SingleOrDefault<TSource>(this IEnumerable<TSource> source)
 {
   if (source == null)
@@ -65,7 +67,9 @@ public static TSource SingleOrDefault<TSource>(this IEnumerable<TSource> source)
  - اگر یک آیتم پیدا شود ، پیمایش ادامه پیدا میکند. اگر آیتم مشابه دیگری یافت شود ، به محض رسیدن به آن آیتم ، خطا صادر میشود. ممکن است آیتم مشابه ، آیتم بعدی بوده ( 1+ ) و یا آیتم N ام از Enumerable در حال پیمایش باشد ( N+1 ).
  - در صورتی که آیتمی مشابه با آیتم اول پیدا نشود ، همان آیتم اول برگشت داده خواهد شد.
 
-```C#
+<br>
+
+```csharp
 public static TSource SingleOrDefault<TSource>(
       this IEnumerable<TSource> source,
       Func<TSource, bool> predicate)
