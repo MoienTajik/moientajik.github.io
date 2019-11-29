@@ -52,8 +52,3 @@ enableRobotsTXT = true
     weight = 300
     identifier = "tags"
     url = "/tags/"
-[[menu.main]]
-    name = "درباره من"
-    identifier = "about"
-    weight = 400
-    url = "https://moientajik.github.io/"
