@@ -11,7 +11,7 @@ weight: 1
 
 جدا از اینکه جابه‌جایی استفاده از Single و First در اکثر مواقع امکان پذیر نیست و این دو متد ، نمیتوانند جایگزین یکدیگر باشند و کارایی متفاوتی دارند ، اما بعضی اوقات قابل جابه‌جا شدن نیز هستند.
 
-![Wrong Assumptions](https://i.ytimg.com/vi/OG0evAfzq28/maxresdefault.jpg)
+![Wrong Assumptions](/img/posts/2019-10-16-CSharp-Internals-Single/WrongAssumption.jpg)
 
 ---
 متد SingleOrDefault صرفا "تمام" یک Enumerable را پیمایش نمیکند. ❌
