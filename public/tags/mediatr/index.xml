@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MediatR on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</title>
+    <link>/tags/mediatr/</link>
+    <description>Recent content in MediatR on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fa</language>
+    <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0330</lastBuildDate>
+    
+	<atom:link href="/tags/mediatr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>پیاده سازی CQRS توسط MediatR - قسمت پنجم</title>
+      <link>/posts/2019-02-24-mediatr-part-5/</link>
+      <pubDate>Sun, 24 Feb 2019 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2019-02-24-mediatr-part-5/</guid>
+      <description>کدهای این قسمت به‌روزرسانی شده و از این ریپازیتوری قابل دسترسی است.
+Event Sourcing در این قسمت قصد داریم تا اطلاعات Command‌های خود را بعد از Process، داخل یک دیتابیس Append-Only ذخیره کنیم. با استفاده از این روش میتوانیم بفهمیم در یک تاریخ مشخص، با چه ورودی‌هایی ( Request )، چه جواب ( Response ) ای در آن لحظه از برنامه برگشت داده شده‌ است.
+
+برای پیاده سازی Event Sourcing از دیتابیس EventStore که سورس آن نیز در گیتهاب قابل دسترسی است، استفاده خواهیم کرد.</description>
+    </item>
+    
+    <item>
+      <title>پیاده سازی CQRS توسط MediatR - قسمت چهارم</title>
+      <link>/posts/2019-02-11-mediatr-part-4/</link>
+      <pubDate>Mon, 11 Feb 2019 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2019-02-11-mediatr-part-4/</guid>
+      <description>در این قسمت قصد داریم به بررسی Behavior‌ ها در فریمورک MediatR بپردازیم. کدهای این قسمت بروزرسانی و از این ریپازیتوری قابل دسترسی است.
+با استفاده از Behavior‌ها امکان پیاده سازی AOP را براحتی خواهید داشت. Behavior‌ها، مانند Filter‌‌ ها در ASP.NET MVC هستند. همانطور که با استفاده از متدهای OnActionExecuting و OnActionExecuted میتوانستیم اعمالی را قبل و بعد از اجرای یک اکشن‌متد انجام دهیم، چنین قابلیتی را با Behavior‌ها در MediatR نیز خواهیم داشت.</description>
+    </item>
+    
+    <item>
+      <title>پیاده سازی CQRS توسط MediatR - قسمت سوم</title>
+      <link>/posts/2019-02-02-mediatr-part-3/</link>
+      <pubDate>Sat, 02 Feb 2019 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2019-02-02-mediatr-part-3/</guid>
+      <description>در قسمت قبلی روش استفاده از IRequest و IRequestHandler را در MediatR که نقش پیاده سازی Command/Query را در CQRS بر عهده دارند، بررسی کردیم. کدهای این قسمت در این ریپازیتوری به‌روزرسانی شده و قابل دسترسی است.
+Command ما که نقش ایجاد یک مشتری را داشت ( CreateCustomerCommand ) ، هیچ Validation ای برای اعتبار سنجی مقادیر ورودی از سمت کاربر را ندارد و کاربر با هر مقادیری میتواند این Command را فراخوانی کند.</description>
+    </item>
+    
+    <item>
+      <title>پیاده سازی CQRS توسط MediatR - قسمت دوم</title>
+      <link>/posts/2019-01-27-mediatr-part-2/</link>
+      <pubDate>Sun, 27 Jan 2019 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2019-01-27-mediatr-part-2/</guid>
+      <description>در این مطلب قصد داریم به بررسی امکانات داخلی فریمورک MediatR بپردازیم. سورس این قسمت مقاله در این ریپازیتوری قابل دسترسی است.
+نصب و راه اندازی در ابتدا یک پروژه جدید ASP.NET Core از نوع API را ایجاد میکنیم و با استفاده از Nuget Package Manager ، پکیج MediatR را داخل پروژه نصب میکنیم:
+Install-Package MediatR  بعد از نصب نیاز داریم تا نیازمندی‌های این فریمورک را داخل DI Container خود Register کنیم.</description>
+    </item>
+    
+    <item>
+      <title>پیاده سازی CQRS توسط MediatR - قسمت اول</title>
+      <link>/posts/2019-01-21-mediatr-part-1/</link>
+      <pubDate>Mon, 21 Jan 2019 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2019-01-21-mediatr-part-1/</guid>
+      <description>پیاده سازی الگو CQRS هرچند با فریمورک آماده‌ای همچون SimpleCQRS ، دارای پیچیدگی زیاد و باعث نوشتن حجم زیادی کد می‌شود.
+فریمورک MediatR توسط توسعه دهنده کتابخانه‌ی محبوب AutoMapper ایجاد شده‌است. این فریمورک پیاده سازی کاملی از الگوی طراحی Mediator در NET. است که داخل خود، تمام پیچیدگی‌های پیاده سازی CQRS را Abstract کرده و با حداقل کد ممکن، می‌توانید براحتی CQRS را داخل پروژه‌ خود پیاده سازی کنید.</description>
+    </item>
+    
+  </channel>
+</rss>

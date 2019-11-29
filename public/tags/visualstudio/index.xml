@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VisualStudio on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</title>
+    <link>/tags/visualstudio/</link>
+    <description>Recent content in VisualStudio on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fa</language>
+    <lastBuildDate>Thu, 05 Jul 2018 00:00:00 +0330</lastBuildDate>
+    
+	<atom:link href="/tags/visualstudio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>آشنایی با ویژگی DebuggerTypeProxy در Visual Studio</title>
+      <link>/posts/2018-07-05-debuggertypeproxy/</link>
+      <pubDate>Thu, 05 Jul 2018 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2018-07-05-debuggertypeproxy/</guid>
+      <description>ویژگی DebuggerDisplay در Visual Studio پیش تر معرفی شده است. ویژگی دیگری شبیه به این ویژگی وجود دارد به نام DebuggerTypeProxy که در ادامه به معرفی آن می‌پردازیم.
+کلاس زیر را در نظر بگیرید:
+public class Data { public string Name { get; set; } public string ValueInHex { get; set; } }  پس از اجرای برنامه ، مقادیر کلاس ایجاد شده به این صورت خواهند بود :
+در اینجا مقدار Hex برایمان قابل فهم نیست.</description>
+    </item>
+    
+  </channel>
+</rss>

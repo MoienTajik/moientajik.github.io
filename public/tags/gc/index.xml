@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GC on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</title>
+    <link>/tags/gc/</link>
+    <description>Recent content in GC on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fa</language>
+    <lastBuildDate>Fri, 29 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/gc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Garbage Collector در</title>
+      <link>/posts/2019-11-29-gc-part-1/</link>
+      <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2019-11-29-gc-part-1/</guid>
+      <description>&amp;rdquo;)
+Garbage Collection
+فرض کنید متغییری را ایجاد کرده و به آن مقدار داده ‎‎اید:
+string message = &amp;quot;Hello World!&amp;quot;;  آیا تابحال به این موضوع فکر کرده اید که طول عمر متغییر message تا چه زمانی است و چه زمانی باید از بین برود؟
+چه زمانی باید توسط کامپایلر ( یا بهتر بگوییم ، Runtime ) طول عمر این متغییر به پایان برسد و از حافظه حذف شود؟</description>
+    </item>
+    
+  </channel>
+</rss>

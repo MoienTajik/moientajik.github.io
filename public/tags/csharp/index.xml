@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CSharp on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</title>
+    <link>/tags/csharp/</link>
+    <description>Recent content in CSharp on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fa</language>
+    <lastBuildDate>Fri, 29 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Garbage Collector در</title>
+      <link>/posts/2019-11-29-gc-part-1/</link>
+      <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2019-11-29-gc-part-1/</guid>
+      <description>&amp;rdquo;)
+Garbage Collection
+فرض کنید متغییری را ایجاد کرده و به آن مقدار داده ‎‎اید:
+string message = &amp;quot;Hello World!&amp;quot;;  آیا تابحال به این موضوع فکر کرده اید که طول عمر متغییر message تا چه زمانی است و چه زمانی باید از بین برود؟
+چه زمانی باید توسط کامپایلر ( یا بهتر بگوییم ، Runtime ) طول عمر این متغییر به پایان برسد و از حافظه حذف شود؟</description>
+    </item>
+    
+    <item>
+      <title>C# Internals - Single and SingleOrDefault</title>
+      <link>/posts/2019-10-16-csharp-internals-single/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2019-10-16-csharp-internals-single/</guid>
+      <description>بسیاری از افراد ، گاهی اوقات از متدهای First و FirstOrDefault در LINQ بعنوان جایگزین Single و SingleOrDefault استفاده میکنند ، با این منطق که Single &amp;ldquo;تمام&amp;rdquo; آیتم های یک Enumerable را پیمایش میکند تا نتیجه را یافت کند ، اما First و FirstOrDefault نیاز به پیمایش تمام آیتم های یک Enumerable را ندارند ، در نتیجه سریع تر هستند.
+جدا از اینکه جابه‌جایی استفاده از Single و First در اکثر مواقع امکان پذیر نیست و این دو متد ، نمیتوانند جایگزین یکدیگر باشند و کارایی متفاوتی دارند ، اما بعضی اوقات قابل جابه‌جا شدن نیز هستند.</description>
+    </item>
+    
+  </channel>
+</rss>

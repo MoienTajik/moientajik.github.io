@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fa" class="wf-firasans-n4-active wf-active">
+	<head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+
+<meta name="generator" content="Hugo 0.58.3" />
+
+<title>قیود مسیریابی در ASP.NET Core &middot; Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</title>
+<meta content="Moien Tajik" property="og:site_name">
+<meta content="قیود مسیریابی در ASP.NET Core - Moien Tajik&#39;s Blog | وبلاگ معین تاجیک"
+ property="og:title">
+<meta content="در ASP.NET Core قابلیت Route Constraints باعث جلوگیری از رسیدن مقادیر نامعتبر به پارامترهای Action یک Controller میشود." property="og:description">
+<meta content="/img/posts/2018-11-09-AspNetCore-Route-Constraints/routing.png" property="og:image">
+<!-- CSS -->
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
+<style media="print">
+	.sidebar{display:none!important}.container,.content{width:100%;float:none;display:initial;margin:0 auto}.container{padding-left:1rem;padding-right:1rem}
+</style>
+<link rel="stylesheet" href="/css/poole.css">
+<link rel="stylesheet" href="/css/hyde.css">
+<link rel="stylesheet" href="/css/custom.css">
+
+<!-- Font-Awesome -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+ crossorigin="anonymous"></script>
+<!-- highlight.js-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+<script src="/js/tarikh.js"></script>
+ <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<!-- Icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="/favicon.png">
+
+	</head>
+    <body class="theme-base-te ">
+        <div class="sidebar">
+  <div class="container text-center ">
+    <div class="sidebar-about text-center">
+       <img src="/img/Moien%20Tajik.png" alt="Moien Tajik's Image" class="img-circle headshot center"> 
+	  <a href="/" class="no-decoration"><h1 class="brand">معین تاجیک</h1></a>
+      <p class="lead">
+         توسعه دهنده نرم افزار 
+      </p>
+    </div>
+    
+<div>
+	<ul class="sidebar-nav">
+		
+		
+				<li>
+					<a href="/"> <span>خانه</span></a>
+				</li>
+				<li>
+					<a href="/posts/"> <span>مقالات</span></a>
+				</li>
+				<li>
+					<a href="/tags/"> <span>تگ ها</span></a>
+				</li>
+				<li>
+					<a href="https://moientajik.github.io/"> <span>درباره من</span></a>
+				</li>
+		</li>
+	</ul>
+</div>
+
+    <p>
+      <section class="row text-center">
+	
+	<a href="https://twitter.com/MoienTajik"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	&nbsp;<a href="https://github.com/MoienTajik"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	&nbsp;<a href="https://linkedin.com/in/MoienTajik"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	&nbsp;<a href="https://stackoverflow.com/story/moientajik"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
+	
+	
+	&nbsp;<a href="https://medium.com/@MoienTajik"><i class="fab fa-medium fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	&nbsp;<a href="https://keybase.io/moientajik"><i class="fab fa-keybase fa-lg" aria-hidden="true"></i></a>
+	
+	
+	&nbsp;<a href="mailto:moientajik@hotmail.com"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+    </p>
+    <p class="copyright">&copy; 2019 Moien Tajik.
+      <a href="https://creativecommons.org/licenses/by/4.0">All rights reserved</a>.<br/>Built with <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>
+    </p>
+  </div>
+  <div>
+  </div>
+</div>
+
+        <div class="content container">
+            <div class="post" dir="rtl">
+  <h1 class="postTitle">قیود مسیریابی در ASP.NET Core</h1>
+  
+  <div class="col-sm-12 col-md-12">
+    <span class="text-left post-date meta">
+            
+       
+        <i class="fas fa-calendar-alt"></i> <span id="shamsiDate" class="subtitle"></span>
+		<script>
+			let shamsiDate = JDate("11/09/2018").toString();
+			document.getElementById("shamsiDate").innerText = "تاریخ انتشار : " + shamsiDate;
+		</script>
+      
+      
+      
+        
+        
+            <br/>
+             <i class="fas fa-tags"></i>
+			تگ ها :
+            ,
+            <a class="meta" href="/tags/aspnet">aspnet</a> 
+        ,
+            <a class="meta" href="/tags/aspnetcore">aspnetcore</a> 
+        ,
+            <a class="meta" href="/tags/routing">routing</a>
+        
+      
+      
+      <br/>
+      <i class="fas fa-clock"></i> <span class="subtitle">زمان حدودی مطالعه : 3 دقیقه</span>
+      </span>  
+  </div><hr>    
+  
+  
+
+<p>Route Constraints قابلیتی است در ASP.NET Core که با استفاده از آن میتوانید از رسیدن مقادیر نامعتبر به پارامترهای Action متد یک Controller جلوگیری کنید.</p>
+
+<p>بعنوان مثال میتوانید محدودیتی قرار دهید که Routing فقط زمانی انجام شود که پارامتر وارد شده توسط کاربر، از جنس int باشد:</p>
+
+<pre><code class="language-csharp">[Route(&quot;api/[controller]&quot;)]
+public class ValuesController : ControllerBase
+{
+    [HttpGet(&quot;{id:int}&quot;)]
+    public IActionResult Get(int id)
+    {
+        return Ok(id);
+    }
+}
+</code></pre>
+
+<p>با قرار دادن یک Break-point در ابتدای اکشن متد، اگر سعی کنید این اکشن متد را با یک alpha string فراخوانی کنید، خواهید دید که به Break-point نرسیده و عمل Routing  <strong>انجام نمیشود</strong>. اما اگر با یک عدد فراخوانی شود، Routing با موفقیت انجام شده و عدد ورودی در نتیجه، به شما بازگردانده میشود که نشان میدهد Constraint به درستی عمل کرده است.</p>
+
+<p>✖  api/values/hi</p>
+
+<p>✓ api/values/7</p>
+
+<p>شاید بپرسید تفاوت این روش، با کد زیر چیست:</p>
+
+<pre><code class="language-csharp">[Route(&quot;api/[controller]&quot;)]
+public class ValuesController : ControllerBase
+{
+    [HttpGet(&quot;{id}&quot;)]
+    public IActionResult Get(int id)
+    {
+        // id is 0 here if you pass string.
+        return Ok(id);
+    }
+}
+</code></pre>
+
+<p>در اینجا اگر بعنوان پارامتر ورودی، یک alpha string دهید، Routing  <strong>انجام میشود</strong>، اما چون ورودی int نیست، مقدار id با 0 پر خواهد شد.</p>
+
+<p>✓ api/values/hi</p>
+
+<p>✓ api/values/7</p>
+
+<hr />
+
+<p>2 روش برای اعمال Route Constraint‌ها بر روی URL Parameter‌ها وجود دارند که در ادامه به آن‌ها می‌پردازیم.</p>
+
+<h4 id="1-inline-constraints">1- Inline Constraints</h4>
+
+<p>این نوع Constraint‌ها بعد از URL Parameter قرار گرفته و با استفاده از Colon از هم جدا میشوند:</p>
+
+<pre><code class="language-csharp">app.UseMvc(routes =&gt;
+{
+    routes.MapRoute(&quot;Values&quot;,
+        &quot;api/values/{id:int}&quot;,
+        new { controller = &quot;Values&quot;, action = &quot;Get&quot; });
+});
+</code></pre>
+
+<p>همچنین میتوانید چندین Constraint را باهم ترکیب کنید و محدود به یک Constraint نیستید:</p>
+
+<pre><code class="language-csharp">[Route(&quot;api/[controller]&quot;)]
+public class ValuesController : ControllerBase
+{
+    [HttpGet(&quot;{name:minlength(2):maxlength(10):alpha}&quot;)]
+    public IActionResult Get(string name)
+    {
+        return Ok(name);
+    }
+}
+</code></pre>
+
+<p>✖ api/values/M</p>
+
+<p>✖ api/values/1234</p>
+
+<p>✖ api/values/abcdefghijk</p>
+
+<p>✓ api/values/Moien</p>
+
+<h4 id="2-maproute-s-constraints-argument">2- MapRoute&rsquo;s Constraints Argument</h4>
+
+<p>همه‌ی Constraint‌ها کلاسی هستند که اینترفیس IRouteConstraint را پیاده سازی کرده‌اند. داخل MapRoute میتوانید بطور مستقیم این کلاس‌ها را بعنوان Constraint معرفی کنید:</p>
+
+<pre><code class="language-csharp">app.UseMvc(routes =&gt;
+{
+    routes.MapRoute(
+        name: &quot;Values&quot;,
+        template: &quot;api/values/{name}&quot;,
+        defaults: new { controller = &quot;Values&quot;, action = &quot;Get&quot; },
+        constraints: new
+        {
+            name = new CompositeRouteConstraint(new List&lt;IRouteConstraint&gt;
+            {
+                new AlphaRouteConstraint(),
+                new MinLengthRouteConstraint(2),
+                new MaxLengthRouteConstraint(10)
+            })
+        });
+});
+</code></pre>
+
+<p><strong>*</strong>  این روش در Attribute Routing قابل پیاده سازی نیست.</p>
+
+<hr />
+
+<h4 id="ایجاد-یک-constraint-سفارشی">ایجاد یک Constraint سفارشی</h4>
+
+<p>همانطور که قبلتر گفتیم، همه‌ی Constraint‌ها کلاسی هستند که اینترفیس IRouteConstraint را پیاده سازی کرده‌اند. بنابراین میتوانیم با پیاده سازی این اینترفیس، یک Constraint سفارشی را ایجاد کنیم.</p>
+
+<p>در اینجا قصد داریم Constraint ای را ایجاد کنیم که یک string را به عنوان ورودی دریافت و متد StartsWith را بر روی آن انجام دهد و در صورت true بودن، Routing انجام شود:</p>
+
+<pre><code class="language-csharp">public class StartsWithConstraint : IRouteConstraint
+{
+    public StartsWithConstraint(string startsWith)
+    {
+        if (string.IsNullOrWhiteSpace(startsWith))
+            throw new ArgumentNullException(nameof(StartsWith));
+        StartsWith = startsWith;
+    }
+
+    private string StartsWith { get; }
+
+    public bool Match(HttpContext httpContext,
+        IRouter route,
+        string parameterName,
+        RouteValueDictionary values,
+        RouteDirection routeDirection)
+    {
+        if (parameterName == null)
+            throw new ArgumentNullException(nameof(parameterName));
+
+        if (values == null)
+            throw new ArgumentNullException(nameof(values));
+
+        if (!values.TryGetValue(parameterName, out var value) || value == null)
+            return false;
+
+        string valueString = Convert.ToString(value, CultureInfo.InvariantCulture);
+        return valueString.StartsWith(StartsWith);
+    }
+}
+</code></pre>
+
+<p>همانطور که می‌بینید، به راحتی با پیاده سازی متد Match میتوانید شرط مورد نظر خود را اعمال کنید. بعد از ایجاد Constraint سفارشی خود، باید آن را داخل ConfigureServices برنامه Register کنید:</p>
+
+<pre><code class="language-csharp">services.Configure&lt;RouteOptions&gt;(opt =&gt;
+opt.ConstraintMap.Add(&quot;startsWith&quot;, typeof(StartsWithConstraint)));
+</code></pre>
+
+<p>و در نهایت با نامی که هنگام Register کردن دادید ( در اینجا startsWith ) ، از آن استفاده کنید:</p>
+
+<pre><code class="language-csharp">[Route(&quot;api/[controller]&quot;)]
+public class ValuesController : ControllerBase
+{
+    [HttpGet(&quot;{name:minlength(2):maxlength(10):alpha:startsWith(Mo)}&quot;)]
+    public IActionResult Get(string name)
+    {
+        return Ok(name);
+    }
+}
+</code></pre>
+
+<p>✖ api/values/Ali</p>
+
+<p>✓ api/values/Moien</p>
+
+<p>✓ api/values/Morteza</p>
+
+<hr />
+
+<p>در <a href="https://gist.github.com/MoienTajik/5c5962dba7fb2de278c7eece944f3d85#aspnet-core-default-route-constraints-list">اینجا</a> می‌توانید لیستی از Constraint‌های پیشفرض پیاده سازی شده در ASP.NET Core را مشاهده کنید.</p>
+
+</div><hr>
+            <div class="footer">
+                <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script type="text/javascript">
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+</script>
+
+    
+
+        <h2 dir="rtl">نظرات</h2>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+      (function () {
+            
+            
+            
+            if (location.hostname === "localhost" || 
+            	location.hostname === "127.0.0.1" || 
+            	location.hostname === "") {
+                return;
+			}
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            var disqus_shortname = 'moientajik';
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(
+                  dsq);
+      })();
+</script>
+
+<noscript>
+	Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+      
+
+            </div>
+        </div>
+        
+        
+    </body>
+</html>

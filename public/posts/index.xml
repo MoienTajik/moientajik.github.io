@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fa</language>
+    <lastBuildDate>Fri, 29 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Garbage Collector در</title>
+      <link>/posts/2019-11-29-gc-part-1/</link>
+      <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2019-11-29-gc-part-1/</guid>
+      <description>&amp;rdquo;)
+Garbage Collection
+فرض کنید متغییری را ایجاد کرده و به آن مقدار داده ‎‎اید:
+string message = &amp;quot;Hello World!&amp;quot;;  آیا تابحال به این موضوع فکر کرده اید که طول عمر متغییر message تا چه زمانی است و چه زمانی باید از بین برود؟
+چه زمانی باید توسط کامپایلر ( یا بهتر بگوییم ، Runtime ) طول عمر این متغییر به پایان برسد و از حافظه حذف شود؟</description>
+    </item>
+    
+    <item>
+      <title>C# Internals - Single and SingleOrDefault</title>
+      <link>/posts/2019-10-16-csharp-internals-single/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2019-10-16-csharp-internals-single/</guid>
+      <description>بسیاری از افراد ، گاهی اوقات از متدهای First و FirstOrDefault در LINQ بعنوان جایگزین Single و SingleOrDefault استفاده میکنند ، با این منطق که Single &amp;ldquo;تمام&amp;rdquo; آیتم های یک Enumerable را پیمایش میکند تا نتیجه را یافت کند ، اما First و FirstOrDefault نیاز به پیمایش تمام آیتم های یک Enumerable را ندارند ، در نتیجه سریع تر هستند.
+جدا از اینکه جابه‌جایی استفاده از Single و First در اکثر مواقع امکان پذیر نیست و این دو متد ، نمیتوانند جایگزین یکدیگر باشند و کارایی متفاوتی دارند ، اما بعضی اوقات قابل جابه‌جا شدن نیز هستند.</description>
+    </item>
+    
+    <item>
+      <title>پیاده سازی CQRS توسط MediatR - قسمت پنجم</title>
+      <link>/posts/2019-02-24-mediatr-part-5/</link>
+      <pubDate>Sun, 24 Feb 2019 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2019-02-24-mediatr-part-5/</guid>
+      <description>کدهای این قسمت به‌روزرسانی شده و از این ریپازیتوری قابل دسترسی است.
+Event Sourcing در این قسمت قصد داریم تا اطلاعات Command‌های خود را بعد از Process، داخل یک دیتابیس Append-Only ذخیره کنیم. با استفاده از این روش میتوانیم بفهمیم در یک تاریخ مشخص، با چه ورودی‌هایی ( Request )، چه جواب ( Response ) ای در آن لحظه از برنامه برگشت داده شده‌ است.
+
+برای پیاده سازی Event Sourcing از دیتابیس EventStore که سورس آن نیز در گیتهاب قابل دسترسی است، استفاده خواهیم کرد.</description>
+    </item>
+    
+    <item>
+      <title>پیاده سازی CQRS توسط MediatR - قسمت چهارم</title>
+      <link>/posts/2019-02-11-mediatr-part-4/</link>
+      <pubDate>Mon, 11 Feb 2019 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2019-02-11-mediatr-part-4/</guid>
+      <description>در این قسمت قصد داریم به بررسی Behavior‌ ها در فریمورک MediatR بپردازیم. کدهای این قسمت بروزرسانی و از این ریپازیتوری قابل دسترسی است.
+با استفاده از Behavior‌ها امکان پیاده سازی AOP را براحتی خواهید داشت. Behavior‌ها، مانند Filter‌‌ ها در ASP.NET MVC هستند. همانطور که با استفاده از متدهای OnActionExecuting و OnActionExecuted میتوانستیم اعمالی را قبل و بعد از اجرای یک اکشن‌متد انجام دهیم، چنین قابلیتی را با Behavior‌ها در MediatR نیز خواهیم داشت.</description>
+    </item>
+    
+    <item>
+      <title>پیاده سازی CQRS توسط MediatR - قسمت سوم</title>
+      <link>/posts/2019-02-02-mediatr-part-3/</link>
+      <pubDate>Sat, 02 Feb 2019 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2019-02-02-mediatr-part-3/</guid>
+      <description>در قسمت قبلی روش استفاده از IRequest و IRequestHandler را در MediatR که نقش پیاده سازی Command/Query را در CQRS بر عهده دارند، بررسی کردیم. کدهای این قسمت در این ریپازیتوری به‌روزرسانی شده و قابل دسترسی است.
+Command ما که نقش ایجاد یک مشتری را داشت ( CreateCustomerCommand ) ، هیچ Validation ای برای اعتبار سنجی مقادیر ورودی از سمت کاربر را ندارد و کاربر با هر مقادیری میتواند این Command را فراخوانی کند.</description>
+    </item>
+    
+    <item>
+      <title>پیاده سازی CQRS توسط MediatR - قسمت دوم</title>
+      <link>/posts/2019-01-27-mediatr-part-2/</link>
+      <pubDate>Sun, 27 Jan 2019 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2019-01-27-mediatr-part-2/</guid>
+      <description>در این مطلب قصد داریم به بررسی امکانات داخلی فریمورک MediatR بپردازیم. سورس این قسمت مقاله در این ریپازیتوری قابل دسترسی است.
+نصب و راه اندازی در ابتدا یک پروژه جدید ASP.NET Core از نوع API را ایجاد میکنیم و با استفاده از Nuget Package Manager ، پکیج MediatR را داخل پروژه نصب میکنیم:
+Install-Package MediatR  بعد از نصب نیاز داریم تا نیازمندی‌های این فریمورک را داخل DI Container خود Register کنیم.</description>
+    </item>
+    
+    <item>
+      <title>پیاده سازی CQRS توسط MediatR - قسمت اول</title>
+      <link>/posts/2019-01-21-mediatr-part-1/</link>
+      <pubDate>Mon, 21 Jan 2019 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2019-01-21-mediatr-part-1/</guid>
+      <description>پیاده سازی الگو CQRS هرچند با فریمورک آماده‌ای همچون SimpleCQRS ، دارای پیچیدگی زیاد و باعث نوشتن حجم زیادی کد می‌شود.
+فریمورک MediatR توسط توسعه دهنده کتابخانه‌ی محبوب AutoMapper ایجاد شده‌است. این فریمورک پیاده سازی کاملی از الگوی طراحی Mediator در NET. است که داخل خود، تمام پیچیدگی‌های پیاده سازی CQRS را Abstract کرده و با حداقل کد ممکن، می‌توانید براحتی CQRS را داخل پروژه‌ خود پیاده سازی کنید.</description>
+    </item>
+    
+    <item>
+      <title>الگوهای طراحی - Mediator</title>
+      <link>/posts/2019-01-19-mediator-design-pattern/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2019-01-19-mediator-design-pattern/</guid>
+      <description>الگوی طراحی Mediator نحوه ی ارتباط چند object را در داخل خود کپسوله و مشخص میکند.
+یک مثال واقعی از این الگو :
+برج مراقبت یک فرودگاه را در نظر بگیرید. این بخش از تمامی هواپیماهایی که تردد میکنند باخبر بوده و وظیفه مدیریت پرواز آن ها را بر عهده داشته و اجازه فرود و پرواز آن ها را صادر میکند. در صورتی که اجازه فرود داده نشود ، هواپیما اجازه به نشستن ندارد.</description>
+    </item>
+    
+    <item>
+      <title>API Versioning in ASP.NET Core</title>
+      <link>/posts/2018-11-12-aspnetcore-api-versioning/</link>
+      <pubDate>Mon, 12 Nov 2018 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2018-11-12-aspnetcore-api-versioning/</guid>
+      <description>حتما درباره الزامات استفاده‌ از API Versioning خوانده ایم. همانطور که میدانیم ، پیاده سازی Versioning در ASP.NET Web API کاری دشوار و زمانبر بود؛ اما در ASP.NET Core انجام تمامی آن مراحل، در یک خط صورت می‌گیرد که در ادامه آن را بررسی میکنیم.
+برای شروع با اجرای این دستور در Package Manager Console، پکیج Microsoft.AspNetCore.Mvc.Versioning را داخل پروژه نصب می‌کنیم:
+Install-Package Microsoft.AspNetCore.Mvc.Versioning  بعد از نصب، کافیست کد زیر را داخل متد ConfigureServices در فایل Startup.</description>
+    </item>
+    
+    <item>
+      <title>قیود مسیریابی در ASP.NET Core</title>
+      <link>/posts/2018-11-09-aspnetcore-route-constraints/</link>
+      <pubDate>Fri, 09 Nov 2018 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2018-11-09-aspnetcore-route-constraints/</guid>
+      <description>Route Constraints قابلیتی است در ASP.NET Core که با استفاده از آن میتوانید از رسیدن مقادیر نامعتبر به پارامترهای Action متد یک Controller جلوگیری کنید.
+بعنوان مثال میتوانید محدودیتی قرار دهید که Routing فقط زمانی انجام شود که پارامتر وارد شده توسط کاربر، از جنس int باشد:
+[Route(&amp;quot;api/[controller]&amp;quot;)] public class ValuesController : ControllerBase { [HttpGet(&amp;quot;{id:int}&amp;quot;)] public IActionResult Get(int id) { return Ok(id); } }  با قرار دادن یک Break-point در ابتدای اکشن متد، اگر سعی کنید این اکشن متد را با یک alpha string فراخوانی کنید، خواهید دید که به Break-point نرسیده و عمل Routing انجام نمیشود.</description>
+    </item>
+    
+    <item>
+      <title>آشنایی با ویژگی DebuggerTypeProxy در Visual Studio</title>
+      <link>/posts/2018-07-05-debuggertypeproxy/</link>
+      <pubDate>Thu, 05 Jul 2018 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2018-07-05-debuggertypeproxy/</guid>
+      <description>ویژگی DebuggerDisplay در Visual Studio پیش تر معرفی شده است. ویژگی دیگری شبیه به این ویژگی وجود دارد به نام DebuggerTypeProxy که در ادامه به معرفی آن می‌پردازیم.
+کلاس زیر را در نظر بگیرید:
+public class Data { public string Name { get; set; } public string ValueInHex { get; set; } }  پس از اجرای برنامه ، مقادیر کلاس ایجاد شده به این صورت خواهند بود :
+در اینجا مقدار Hex برایمان قابل فهم نیست.</description>
+    </item>
+    
+    <item>
+      <title>تولید اطلاعات تصادفی توسط GenFu</title>
+      <link>/posts/2018-07-03-genfu/</link>
+      <pubDate>Tue, 03 Jul 2018 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2018-07-03-genfu/</guid>
+      <description>گاها برای تولید اطلاعات تصادفی، خصوصا هنگام نوشتن تست‌ها، زمان زیادی بیهوده تلف شده و حجم زیادی کد اضافه تولید میشود. کتابخانه‌ای بنام GenFu ایجاد شده که وظیفه ایجاد داده‌های تصادفی را بر عهده گرفته‌ است. این کتابخانه متن باز (Open Source) بوده و می‌توانید آن را از مخزن گیت‌هاب دریافت نمایید.
+در مطلب جاری قصد ایجاد اطلاعات تصادفی برای کلاس زیر را داریم :
+public class Person { public int ID { get; set; } public string Firstname { get; set; } public string Lastname { get; set; } public string Email { get; set; } public string PhoneNumber { get; set; } public override string ToString() { return $&amp;quot;{ID}: {Firstname} {Lastname} - {Email} - {PhoneNumber}&amp;quot;; } }  نصب GenFu</description>
+    </item>
+    
+  </channel>
+</rss>

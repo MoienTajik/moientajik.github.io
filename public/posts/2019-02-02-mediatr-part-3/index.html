@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fa" class="wf-firasans-n4-active wf-active">
+	<head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+
+<meta name="generator" content="Hugo 0.58.3" />
+
+<title>پیاده سازی CQRS توسط MediatR - قسمت سوم &middot; Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</title>
+<meta content="Moien Tajik" property="og:site_name">
+<meta content="پیاده سازی CQRS توسط MediatR - قسمت سوم - Moien Tajik&#39;s Blog | وبلاگ معین تاجیک"
+ property="og:title">
+<meta content="در این سری مقالات به پیاده سازی الگوی طراحی CQRS توسط کتابخانه MediatR میپردازیم." property="og:description">
+<meta content="/img/posts/2019-02-02-MediatR-Part-3/PubSub.jpg" property="og:image">
+<!-- CSS -->
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
+<style media="print">
+	.sidebar{display:none!important}.container,.content{width:100%;float:none;display:initial;margin:0 auto}.container{padding-left:1rem;padding-right:1rem}
+</style>
+<link rel="stylesheet" href="/css/poole.css">
+<link rel="stylesheet" href="/css/hyde.css">
+<link rel="stylesheet" href="/css/custom.css">
+
+<!-- Font-Awesome -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+ crossorigin="anonymous"></script>
+<!-- highlight.js-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+<script src="/js/tarikh.js"></script>
+ <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<!-- Icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="/favicon.png">
+
+	</head>
+    <body class="theme-base-te ">
+        <div class="sidebar">
+  <div class="container text-center ">
+    <div class="sidebar-about text-center">
+       <img src="/img/Moien%20Tajik.png" alt="Moien Tajik's Image" class="img-circle headshot center"> 
+	  <a href="/" class="no-decoration"><h1 class="brand">معین تاجیک</h1></a>
+      <p class="lead">
+         توسعه دهنده نرم افزار 
+      </p>
+    </div>
+    
+<div>
+	<ul class="sidebar-nav">
+		
+		
+				<li>
+					<a href="/"> <span>خانه</span></a>
+				</li>
+				<li>
+					<a href="/posts/"> <span>مقالات</span></a>
+				</li>
+				<li>
+					<a href="/tags/"> <span>تگ ها</span></a>
+				</li>
+				<li>
+					<a href="https://moientajik.github.io/"> <span>درباره من</span></a>
+				</li>
+		</li>
+	</ul>
+</div>
+
+    <p>
+      <section class="row text-center">
+	
+	<a href="https://twitter.com/MoienTajik"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	&nbsp;<a href="https://github.com/MoienTajik"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	&nbsp;<a href="https://linkedin.com/in/MoienTajik"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	&nbsp;<a href="https://stackoverflow.com/story/moientajik"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
+	
+	
+	&nbsp;<a href="https://medium.com/@MoienTajik"><i class="fab fa-medium fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	&nbsp;<a href="https://keybase.io/moientajik"><i class="fab fa-keybase fa-lg" aria-hidden="true"></i></a>
+	
+	
+	&nbsp;<a href="mailto:moientajik@hotmail.com"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+    </p>
+    <p class="copyright">&copy; 2019 Moien Tajik.
+      <a href="https://creativecommons.org/licenses/by/4.0">All rights reserved</a>.<br/>Built with <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>
+    </p>
+  </div>
+  <div>
+  </div>
+</div>
+
+        <div class="content container">
+            <div class="post" dir="rtl">
+  <h1 class="postTitle">پیاده سازی CQRS توسط MediatR - قسمت سوم</h1>
+  
+  <div class="col-sm-12 col-md-12">
+    <span class="text-left post-date meta">
+            
+       
+        <i class="fas fa-calendar-alt"></i> <span id="shamsiDate" class="subtitle"></span>
+		<script>
+			let shamsiDate = JDate("02/02/2019").toString();
+			document.getElementById("shamsiDate").innerText = "تاریخ انتشار : " + shamsiDate;
+		</script>
+      
+      
+      
+        
+        
+            <br/>
+             <i class="fas fa-tags"></i>
+			تگ ها :
+            ,
+            <a class="meta" href="/tags/cqrs">cqrs</a> 
+        ,
+            <a class="meta" href="/tags/designpatterns">designpatterns</a> 
+        ,
+            <a class="meta" href="/tags/eventsourcing">eventsourcing</a> 
+        ,
+            <a class="meta" href="/tags/mediator">mediator</a> 
+        ,
+            <a class="meta" href="/tags/mediatr">mediatr</a>
+        
+      
+      
+      <br/>
+      <i class="fas fa-clock"></i> <span class="subtitle">زمان حدودی مطالعه : 4 دقیقه</span>
+      </span>  
+  </div><hr>    
+  
+  
+
+<p>در <a href="https://moien.dev/posts/2019-01-27-mediatr-part-2">قسمت قبلی</a> روش استفاده از IRequest و IRequestHandler را در MediatR که نقش پیاده سازی Command/Query را در CQRS بر عهده دارند، بررسی کردیم. کدهای این قسمت در این <a href="https://github.com/MoienTajik/MediatrTutorial">ریپازیتوری</a> به‌روزرسانی شده و قابل دسترسی است.</p>
+
+<hr />
+
+<p><img src="/img/posts/2019-02-02-MediatR-Part-3/FluentValidation.jpg" alt="Fluent Validation" width="270" style="margin:auto;">
+<br></p>
+
+<p>Command ما که نقش ایجاد یک مشتری را داشت ( CreateCustomerCommand ) ، هیچ Validation ای برای اعتبار سنجی مقادیر ورودی از سمت کاربر را ندارد و کاربر با هر مقادیری میتواند این Command را فراخوانی کند. در این قسمت با استفاده از کتابخانه <a href="https://github.com/JeremySkinner/FluentValidation">Fluent Validation</a>  امکان اعتبار سنجی را به Command‌های خود اضافه میکنیم.</p>
+
+<p>در ابتدا با استفاده از دستور زیر ، این کتابخانه را داخل پروژه خود نصب میکنیم:</p>
+
+<pre><code class="language-csharp">Install-Package FluentValidation.AspNetCore
+</code></pre>
+
+<p>بعد از افزودن این کتابخانه، باید آن را داخل DI Container خود Register کنیم:</p>
+
+<pre><code class="language-csharp">services.AddMvc()
+    .AddFluentValidation(cfg =&gt; cfg.RegisterValidatorsFromAssemblyContaining&lt;Startup&gt;());
+</code></pre>
+
+<p>کلاس جدیدی با نام CreateCustomerCommandValidator ایجاد میکنیم و از کلاس AbstractValidator مربوط به Fluent Validation ارث بری میکنیم تا منطق اعتبارسنجی برای CreateCustomerCommand را داخل آن تعریف نماییم :</p>
+
+<pre><code class="language-csharp">public class CreateCustomerCommandValidator : AbstractValidator&lt;CreateCustomerCommand&gt;
+{
+    public CreateCustomerCommandValidator()
+    {
+        RuleFor(customer =&gt; customer.FirstName).NotEmpty();
+        RuleFor(customer =&gt; customer.LastName).NotEmpty();
+    }
+}
+</code></pre>
+
+<p>همانطور که میبینید در اینجا خالی نبودن Firstname و Lastname ورودی از سمت کاربر را چک کرده‌ایم. Fluent Validation دارای متدهای زیادی برای اعتبارسنجی است که لیست آن‌ها را در <a href="https://fluentvalidation.net/built-in-validators">اینجا</a> میتوانید ببینید. همچنین درصورت نیاز میتوانید Validator‌های سفارشی خود را طبق <a href="https://fluentvalidation.net/custom-validators">نمونه‌ها</a> ایجاد کنید.</p>
+
+<p>اگر برنامه را اجرا و CreateCustomerCommand را با مقادیر خالی فراخوانی کنیم، خواهید دید که بلافاصله با چنین خطایی مواجه خواهید شد که نشان میدهد Fluent Validation بدرستی وظیفه اعتبارسنجی ورودی‌ها را انجام داده است:</p>
+
+<pre><code class="language-csharp">Error: Bad Request
+
+{
+  &quot;LastName&quot;: [
+    &quot;'Last Name' must not be empty.&quot;
+  ],
+  &quot;FirstName&quot;: [
+    &quot;'First Name' must not be empty.&quot;
+  ]
+}
+</code></pre>
+
+<p><strong>*</strong> <strong>نکته :</strong>  تمامی اعتبارسنجی‌های سطحی ( Superficial Validation ) مانند خالی نبودن مقادیر، اعتبارسنجی تاریخ‌ها، اعتبارسنجی ایمیل و &hellip; باید  <strong>قبل</strong>  از Handle شدن Command‌ها صورت گیرد و در صورت ناموفق بودن اعتبارسنجی، نباید وارد متد Handle در Command‌ها شویم. ( <a href="https://enterprisecraftsmanship.com/2015/09/15/fail-fast-principle/">Fail Fast Principle</a> )</p>
+
+<hr />
+
+<h3 id="events">Events</h3>
+
+<p><img src="/img/posts/2019-02-02-MediatR-Part-3/PubSub.jpg" alt="Observer Pattern" style="margin:auto;">
+<br></p>
+
+<p>فرض کنید میخواهیم در صورت موفقیت آمیز بودن ثبت نام یک مشتری، برای او ایمیلی ارسال کنیم. فرستادن ایمیل وظیفه CreateCustomerCommand نیست و در صورت افزودن منطق ارسال ایمیل به Command، اصل <a href="http://principles-wiki.net/principles:single_responsibility_principle">SRP</a> را نقض کرده‌ایم.</p>
+
+<p>برای حل این مشکل میتوانیم از Event‌ها استفاده کنیم. Event‌ها خبری را به Subscriber‌ <strong>های</strong>  خود میدهند. در فریمورک MediatR، ارسال و Handle کردن Event‌‌ها، با دو interface صورت میگیرد: INotification و INotificationHandler</p>
+
+<p>بر خلاف Command‌ها که فقط یک Handler میتوانند داشته باشند، Event ها میتوانند چندین Handler داشته باشند. مزیت داشتن چند Subscriber برای Event‌ها این است که شما علاوه بر اینکه میتوانید Subscriber ای داشته باشید که وظیفه ارسال Email برای مشتری را بر عهده داشته باشد، میتوانید Subscriber دیگری داشته باشید که اطلاعات مشتری جدید را Log کند.</p>
+
+<p>ابتدا کلاس CustomerCreatedEvent را ایجاد و از INotification ارث بری میکنیم. این کلاس منتشر کننده یک اتفاق است که آن را Producer مینامند :</p>
+
+<pre><code class="language-csharp">public class CustomerCreatedEvent : INotification
+{
+    public CustomerCreatedEvent(string firstName, string lastName, DateTime registrationDate)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+        RegistrationDate = registrationDate;
+    }
+
+    public string FirstName { get; }
+
+    public string LastName { get; }
+
+    public DateTime RegistrationDate { get; }
+}
+</code></pre>
+
+<p>سپس دو Handler برای این Event مینویسیم. Handler اول وظیفه ارسال ایمیل را بر عهده دارد :</p>
+
+<pre><code class="language-csharp">public class CustomerCreatedEmailSenderHandler : INotificationHandler&lt;CustomerCreatedEvent&gt;
+{
+    public Task Handle(CustomerCreatedEvent notification, CancellationToken cancellationToken)
+    {
+        // IMessageSender.Send($&quot;Welcome {notification.FirstName} {notification.LastName} !&quot;);
+        return Task.CompletedTask;
+    }
+}
+</code></pre>
+
+<p>و Handler دوم، وظیفه Log کردن اطلاعات مشتری ثبت شده را بر عهده خواهد داشت:</p>
+
+<pre><code class="language-csharp">public class CustomerCreatedLoggerHandler : INotificationHandler&lt;CustomerCreatedEvent&gt;
+{
+    readonly ILogger&lt;CustomerCreatedLoggerHandler&gt; _logger;
+
+    public CustomerCreatedLoggerHandler(ILogger&lt;CustomerCreatedLoggerHandler&gt; logger)
+    {
+        _logger = logger;
+    }
+
+    public Task Handle(CustomerCreatedEvent notification, CancellationToken cancellationToken)
+    {
+        _logger.LogInformation($&quot;New customer has been created at {notification.RegistrationDate}: {notification.FirstName} {notification.LastName}&quot;);
+
+        return Task.CompletedTask;
+    }
+}
+</code></pre>
+
+<p>در نهایت کافیست داخل CreateCustomerCommandHandler که در <a href="https://moien.dev/posts/2019-01-27-mediatr-part-2">قسمت قبل</a> آن را ایجاد کردیم، متد Handle را ویرایش و با استفاده از متد Publish موجود در اینترفیس IMediator، این Event را Raise کنیم :</p>
+
+<pre><code class="language-csharp">public class CreateCustomerCommandHandler : IRequestHandler&lt;CreateCustomerCommand, CustomerDto&gt;
+{
+    readonly ApplicationDbContext _context;
+    readonly IMapper _mapper;
+    readonly IMediator _mediator;
+
+    public CreateCustomerCommandHandler(ApplicationDbContext context,
+        IMapper mapper,
+        IMediator mediator)
+    {
+        _context = context;
+        _mapper = mapper;
+        _mediator = mediator;
+    }
+
+    public async Task&lt;CustomerDto&gt; Handle(CreateCustomerCommand createCustomerCommand, CancellationToken cancellationToken)
+    {
+        Customer customer = _mapper.Map&lt;Customer&gt;(createCustomerCommand);
+
+        await _context.Customers.AddAsync(customer, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        // Raising Event ...
+        await _mediator.Publish(new CustomerCreatedEvent(customer.FirstName, customer.LastName, customer.RegistrationDate), cancellationToken);
+
+        return _mapper.Map&lt;CustomerDto&gt;(customer);
+    }
+}
+</code></pre>
+
+<p>برنامه را اجرا و روی دو NotificationHandler خود Breakpoint قرار دهید. اگر api/Customers را برای ایجاد یک مشتری جدید فراخوانی کنید، بعد از ثبت نام موفق مشتری، خواهید دید که هر دو Handler شما Raise میشوند و اطلاعات مشتری را که با LogHandler خود داخل Console لاگ کردیم، خواهیم دید:</p>
+
+<pre><code class="language-csharp">info: MediatrTutorial.Features.Customer.Events.CustomerCreated.CustomerCreatedLoggerHandler[0]
+      New customer has been created at 2/1/2019 11:40:48 PM: Moien Tajik
+</code></pre>
+
+<hr />
+
+<p><strong>*</strong> <strong>نکته :</strong> در این قسمت از آموزش برای Log کردن اطلاعات از یک Notification استفاده کردیم. اگر تعداد Command‌های ما در برنامه بیشتر شوند، به ازای هر Command مجبور به ایجاد یک Notification و NotificationHandler خواهیم بود که منطق کار آن‌ها بسیار شبیه به یک دیگر است.</p>
+
+<p>در مقاله بعدی با استفاده از Behaviors موجود در MediatR که <a href="https://www.dotnettips.info/courses/details/4">AOP</a> را پیاده سازی میکند، این موارد تکراری را از بین خواهیم برد.</p>
+
+</div><hr>
+            <div class="footer">
+                <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script type="text/javascript">
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+</script>
+
+    
+
+        <h2 dir="rtl">نظرات</h2>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+      (function () {
+            
+            
+            
+            if (location.hostname === "localhost" || 
+            	location.hostname === "127.0.0.1" || 
+            	location.hostname === "") {
+                return;
+			}
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            var disqus_shortname = 'moientajik';
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(
+                  dsq);
+      })();
+</script>
+
+<noscript>
+	Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+      
+
+            </div>
+        </div>
+        
+        
+    </body>
+</html>

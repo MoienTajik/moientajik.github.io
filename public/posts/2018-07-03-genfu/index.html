@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fa" class="wf-firasans-n4-active wf-active">
+	<head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+
+<meta name="generator" content="Hugo 0.58.3" />
+
+<title>تولید اطلاعات تصادفی توسط GenFu &middot; Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</title>
+<meta content="Moien Tajik" property="og:site_name">
+<meta content="تولید اطلاعات تصادفی توسط GenFu - Moien Tajik&#39;s Blog | وبلاگ معین تاجیک"
+ property="og:title">
+<meta content="تولید اطلاعات تصادفی توسط GenFu" property="og:description">
+<meta content="/img/posts/2018-07-03-GenFu/GenFu.png" property="og:image">
+<!-- CSS -->
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
+<style media="print">
+	.sidebar{display:none!important}.container,.content{width:100%;float:none;display:initial;margin:0 auto}.container{padding-left:1rem;padding-right:1rem}
+</style>
+<link rel="stylesheet" href="/css/poole.css">
+<link rel="stylesheet" href="/css/hyde.css">
+<link rel="stylesheet" href="/css/custom.css">
+
+<!-- Font-Awesome -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+ crossorigin="anonymous"></script>
+<!-- highlight.js-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+<script src="/js/tarikh.js"></script>
+ <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<!-- Icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="/favicon.png">
+
+	</head>
+    <body class="theme-base-te ">
+        <div class="sidebar">
+  <div class="container text-center ">
+    <div class="sidebar-about text-center">
+       <img src="/img/Moien%20Tajik.png" alt="Moien Tajik's Image" class="img-circle headshot center"> 
+	  <a href="/" class="no-decoration"><h1 class="brand">معین تاجیک</h1></a>
+      <p class="lead">
+         توسعه دهنده نرم افزار 
+      </p>
+    </div>
+    
+<div>
+	<ul class="sidebar-nav">
+		
+		
+				<li>
+					<a href="/"> <span>خانه</span></a>
+				</li>
+				<li>
+					<a href="/posts/"> <span>مقالات</span></a>
+				</li>
+				<li>
+					<a href="/tags/"> <span>تگ ها</span></a>
+				</li>
+				<li>
+					<a href="https://moientajik.github.io/"> <span>درباره من</span></a>
+				</li>
+		</li>
+	</ul>
+</div>
+
+    <p>
+      <section class="row text-center">
+	
+	<a href="https://twitter.com/MoienTajik"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	&nbsp;<a href="https://github.com/MoienTajik"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	&nbsp;<a href="https://linkedin.com/in/MoienTajik"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	&nbsp;<a href="https://stackoverflow.com/story/moientajik"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
+	
+	
+	&nbsp;<a href="https://medium.com/@MoienTajik"><i class="fab fa-medium fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	&nbsp;<a href="https://keybase.io/moientajik"><i class="fab fa-keybase fa-lg" aria-hidden="true"></i></a>
+	
+	
+	&nbsp;<a href="mailto:moientajik@hotmail.com"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+    </p>
+    <p class="copyright">&copy; 2019 Moien Tajik.
+      <a href="https://creativecommons.org/licenses/by/4.0">All rights reserved</a>.<br/>Built with <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>
+    </p>
+  </div>
+  <div>
+  </div>
+</div>
+
+        <div class="content container">
+            <div class="post" dir="rtl">
+  <h1 class="postTitle">تولید اطلاعات تصادفی توسط GenFu</h1>
+  
+  <div class="col-sm-12 col-md-12">
+    <span class="text-left post-date meta">
+            
+       
+        <i class="fas fa-calendar-alt"></i> <span id="shamsiDate" class="subtitle"></span>
+		<script>
+			let shamsiDate = JDate("07/03/2018").toString();
+			document.getElementById("shamsiDate").innerText = "تاریخ انتشار : " + shamsiDate;
+		</script>
+      
+      
+      
+        
+        
+            <br/>
+             <i class="fas fa-tags"></i>
+			تگ ها :
+            ,
+            <a class="meta" href="/tags/datagenerator">datagenerator</a> 
+        ,
+            <a class="meta" href="/tags/fake">fake</a> 
+        ,
+            <a class="meta" href="/tags/genfu">genfu</a>
+        
+      
+      
+      <br/>
+      <i class="fas fa-clock"></i> <span class="subtitle">زمان حدودی مطالعه : 4 دقیقه</span>
+      </span>  
+  </div><hr>    
+  
+  <p>گاها برای تولید اطلاعات تصادفی، خصوصا هنگام نوشتن تست‌ها، زمان زیادی بیهوده تلف شده و حجم زیادی کد اضافه تولید میشود. کتابخانه‌ای بنام GenFu ایجاد شده که وظیفه ایجاد داده‌های تصادفی را بر عهده گرفته‌ است. این کتابخانه متن باز (Open Source) بوده و می‌توانید آن را از مخزن  <a href="https://github.com/MisterJames/GenFu">گیت‌هاب</a>  دریافت نمایید.</p>
+
+<p>در مطلب جاری قصد ایجاد اطلاعات تصادفی برای کلاس زیر را داریم :</p>
+
+<pre><code class="language-csharp">public class Person
+{
+    public int ID { get; set; }
+
+    public string Firstname { get; set; }
+
+    public string Lastname { get; set; }
+
+    public string Email { get; set; }
+
+    public string PhoneNumber { get; set; }
+
+    public override string ToString()
+    {
+        return $&quot;{ID}: {Firstname} {Lastname} - {Email} - {PhoneNumber}&quot;;
+    }
+}
+</code></pre>
+
+<p><strong>نصب GenFu</strong></p>
+
+<p>برای نصب کتابخانه GenFu از دستور زیر در Package Manager Console استفاده میکنیم :</p>
+
+<pre><code class="language-csharp">Install-Package GenFu
+</code></pre>
+
+<hr />
+
+<p><strong>1. ایجاد یک شخص</strong></p>
+
+<p>برای ایجاد شخصی جدید همراه با اطلاعاتی تصادفی به شکل زیر عمل خواهیم کرد :</p>
+
+<pre><code class="language-csharp">var person = A.New&lt;Person&gt;();
+Console.WriteLine(person);
+</code></pre>
+
+<p>نتیجه کد فوق به این صورت خواهد بود :</p>
+
+<pre><code class="language-csharp">18: Diedra Morgan - Zachary.Garcia@telus.net - (531) 273-9001
+</code></pre>
+
+<p>اگر دقت کنید متوجه میشوید که GenFu بصورت خودکار داده‌هایی مرتبط با Property هایی که نام گذاری کردید‌، ایجاد کرده‌است.</p>
+
+<p>برای Email، داده‌ای با فرمت صحیح ایمیل و برای PhoneNumber هم شماره تلفنی با فرمت صحیح تولید شده است.</p>
+
+<hr />
+
+<p><strong>2. ایجاد چند شخص</strong></p>
+
+<p>برای ایجاد لیستی از اشخاص نیز میتوانید از متد ListOf استفاده کرده و تعداد اشخاص مورد نیازتان را به آن ارسال کنید ( پیشفرض 25 ) :</p>
+
+<pre><code class="language-csharp">var people = A.ListOf&lt;Person&gt;(5);
+people.ForEach(Console.WriteLine);
+</code></pre>
+
+<p>کد فوق باعث ایجاد 5 شخص با اطلاعات تصادفی متفاوتی خواهد شد:</p>
+
+<pre><code class="language-csharp">97: Maria MacKenzie - Alexandra.Johnson@rogers.ca - (670) 787-3053
+34: Alexander Scott - Isaiah.Price@gmail.com - (730) 645-4946
+66: Kevin Perez - Gabrielle.Alexander@hotmail.com - (230) 758-8233
+81: Maria Evans - Vanessa.Bell@rogers.ca - (508) 572-4343
+79: Tyler Parker - Alyssa.Taylor@telus.net - (297) 357-7617
+</code></pre>
+
+<p>تا به اینجای کار GenFu بخوبی جوابگوی نیازهایمان بوده‌است. اما اگر پیشفرض‌ها جوابگو نبود و بخواهیم فرمت داده‌های تولید شده را تغییر دهیم چطور ؟</p>
+
+<p>برای اینکار میتوانیم از متد Configure استفاده کرده و نحوه ایجاد داده را برای Property هایی که مشخص میکنیم، تغییر دهیم.</p>
+
+<hr />
+
+<p><strong>3. ایجاد چند شخص و مقدارهی یک property با مقدار ثابت</strong></p>
+
+<p>اگر بخواهیم داده‌های ایجاد شده را داخل دیتابیس لحاظ کنیم، نیاز داریم تا ID آن‌ها را برابر 0 قرار دهیم تا دیتابیس مشکلی برای ثبتشان نداشته باشد. برای ایجاد لیستی از اشخاص که ID آن‌ها برابر 0 باشد :</p>
+
+<pre><code class="language-csharp">A.Configure&lt;Person&gt;().Fill(x =&gt; x.ID, 0);
+
+var people = A.ListOf&lt;Person&gt;(5);
+people.ForEach(Console.WriteLine);
+</code></pre>
+
+<p>نتیجه :</p>
+
+<pre><code class="language-csharp">0: Darron Gonzalez - Benjamin.Daeninck@hotmail.com - (405) 418-7783
+0: Melanie Garcia - Jennifer.Griffin@microsoft.com - (711) 277-8826
+0: James Hughes - Tristan.Ward@live.com - (734) 400-8322
+0: Miranda Torres - Ross.Davis@rogers.ca - (495) 479-8147
+0: David Hughes - Jillian.Alexander@live.com - (361) 617-6642
+</code></pre>
+
+<p>در این حالت بدون هیچگونه مشکلی میتوانید داده‌های ایجاد شده را داخل دیتابیس ذخیره نمایید.</p>
+
+<hr />
+
+<p><strong>4. ایجاد چند شخص و مقداردهی یک property با متد</strong></p>
+
+<p>حالت دیگری که میتوانید نحوه مقداردهی یک Property را تنظیم کنید، استفاده از متد یا delegate است:</p>
+
+<pre><code class="language-csharp">var i = 1;
+
+A.Configure&lt;Person&gt;()
+    .Fill(c =&gt; c.ID, () =&gt; i++);
+
+var people = A.ListOf&lt;Person&gt;(5);
+people.ForEach(Console.WriteLine);
+</code></pre>
+
+<p>نتیجه :</p>
+
+<pre><code class="language-csharp">1: Paul Long - Carlos.Kelly@telus.net - (202) 573-6278
+2: Jesse Iginla - Liberty.Moore@gmail.com - (589) 791-3606
+3: Raymundo Price - Ang.Taylor@live.com - (336) 400-1601
+4: Elizabeth Getzlaff - Leslie.Campbell@att.com - (662) 582-9010
+5: Abigail Bailey - Tristan.Ross@live.com - (225) 661-7023
+</code></pre>
+
+<p>همانطور که می‌بینید، ID اشخاص بصورت تصاعدی مقداردهی شده است.</p>
+
+<hr />
+
+<p><strong>5. ایجاد چند شخص و مقداردهی یک property با مقادیر property‌های دیگر</strong></p>
+
+<p>همچنین میتوانید از مقادیر Property‌های دیگر برای مقداردهی یک Property استفاده کنید :</p>
+
+<pre><code class="language-csharp">A.Configure&lt;Person&gt;()
+    .Fill(c =&gt; c.ID, 0)
+    .Fill(c =&gt; c.Email,
+        c =&gt; $&quot;{c.Firstname}.{c.Lastname}@gmail.com&quot;);
+
+var people = A.ListOf&lt;Person&gt;(5);
+people.ForEach(Console.WriteLine);
+</code></pre>
+
+<p>کد فوق باعث تولید اشخاصی میشود که ایمیل آن‌ها برابر (Firstname).(Lastname) خواهد بود :</p>
+
+<pre><code class="language-csharp">0: Patrick Perry - Patrick.Perry@gmail.com - (796) 460-6576
+0: Rebecca Main - Rebecca.Main@gmail.com - (757) 472-3332
+0: Kimberly Carter - Kimberly.Carter@gmail.com - (436) 484-8273
+0: Sara Lewis - Sara.Lewis@gmail.com - (424) 717-7682
+0: Lauren Ross - Lauren.Ross@gmail.com - (277) 294-5776
+</code></pre>
+
+<hr />
+
+<p><strong>6. استفاده از Extension‌های درون ساخت GenFu برای مقداردهی</strong></p>
+
+<p>GenFu دارای Extension هایی بوده که باعث میشوند اطلاعات یک Property با مقادیر قابل درک و مشخصی پر شوند.</p>
+
+<p>مثال :</p>
+
+<pre><code class="language-csharp">A.Configure&lt;Person&gt;()
+    .Fill(x =&gt; x.Firstname).AsPersonTitle();
+
+var people = A.ListOf&lt;Person&gt;(5);
+people.ForEach(Console.WriteLine);
+</code></pre>
+
+<p>نتیجه :</p>
+
+<pre><code class="language-csharp">64: Miss. Ratzlaff - Bryce.Simmons@att.com - (386) 309-2414
+7: Air Marshall Yarobi - Ariana.Russell@att.com - (459) 238-0717
+96: Air Marshall Taylor - Luke.Olsen@gmail.com - (775) 401-5281
+28: Doctor Cox - Leah.Diaz@att.com - (569) 464-7961
+99: Master Phillips - Chloe.Scott@hotmail.com - (578) 221-9021
+</code></pre>
+
+<hr />
+
+<p><strong>7. GenFu WireFrame</strong></p>
+
+<p>در نهایت GenFu دارای پکیج جانبی به اسم Wireframes است که شامل HTML Helper هایی است که با استفاده از آن‌ها میتوانید المان‌های HTML مانند P, Image, Table و &hellip; را با مقادیری برای تست بعنوان Placeholder ایجاد کنید.</p>
+
+<p>برای نصب و مطالعه بیشتر درباره GenFu WireFrames این <a href="http://genfu.io/wireframe">لینک</a> را ببینید.</p>
+
+</div><hr>
+            <div class="footer">
+                <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script type="text/javascript">
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+</script>
+
+    
+
+        <h2 dir="rtl">نظرات</h2>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+      (function () {
+            
+            
+            
+            if (location.hostname === "localhost" || 
+            	location.hostname === "127.0.0.1" || 
+            	location.hostname === "") {
+                return;
+			}
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            var disqus_shortname = 'moientajik';
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(
+                  dsq);
+      })();
+</script>
+
+<noscript>
+	Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+      
+
+            </div>
+        </div>
+        
+        
+    </body>
+</html>

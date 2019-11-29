@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Routing on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</title>
+    <link>/tags/routing/</link>
+    <description>Recent content in Routing on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fa</language>
+    <lastBuildDate>Fri, 09 Nov 2018 00:00:00 +0330</lastBuildDate>
+    
+	<atom:link href="/tags/routing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>قیود مسیریابی در ASP.NET Core</title>
+      <link>/posts/2018-11-09-aspnetcore-route-constraints/</link>
+      <pubDate>Fri, 09 Nov 2018 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2018-11-09-aspnetcore-route-constraints/</guid>
+      <description>Route Constraints قابلیتی است در ASP.NET Core که با استفاده از آن میتوانید از رسیدن مقادیر نامعتبر به پارامترهای Action متد یک Controller جلوگیری کنید.
+بعنوان مثال میتوانید محدودیتی قرار دهید که Routing فقط زمانی انجام شود که پارامتر وارد شده توسط کاربر، از جنس int باشد:
+[Route(&amp;quot;api/[controller]&amp;quot;)] public class ValuesController : ControllerBase { [HttpGet(&amp;quot;{id:int}&amp;quot;)] public IActionResult Get(int id) { return Ok(id); } }  با قرار دادن یک Break-point در ابتدای اکشن متد، اگر سعی کنید این اکشن متد را با یک alpha string فراخوانی کنید، خواهید دید که به Break-point نرسیده و عمل Routing انجام نمیشود.</description>
+    </item>
+    
+  </channel>
+</rss>

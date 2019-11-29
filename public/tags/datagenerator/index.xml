@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DataGenerator on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</title>
+    <link>/tags/datagenerator/</link>
+    <description>Recent content in DataGenerator on Moien Tajik&#39;s Blog | وبلاگ معین تاجیک</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fa</language>
+    <lastBuildDate>Tue, 03 Jul 2018 00:00:00 +0330</lastBuildDate>
+    
+	<atom:link href="/tags/datagenerator/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>تولید اطلاعات تصادفی توسط GenFu</title>
+      <link>/posts/2018-07-03-genfu/</link>
+      <pubDate>Tue, 03 Jul 2018 00:00:00 +0330</pubDate>
+      
+      <guid>/posts/2018-07-03-genfu/</guid>
+      <description>گاها برای تولید اطلاعات تصادفی، خصوصا هنگام نوشتن تست‌ها، زمان زیادی بیهوده تلف شده و حجم زیادی کد اضافه تولید میشود. کتابخانه‌ای بنام GenFu ایجاد شده که وظیفه ایجاد داده‌های تصادفی را بر عهده گرفته‌ است. این کتابخانه متن باز (Open Source) بوده و می‌توانید آن را از مخزن گیت‌هاب دریافت نمایید.
+در مطلب جاری قصد ایجاد اطلاعات تصادفی برای کلاس زیر را داریم :
+public class Person { public int ID { get; set; } public string Firstname { get; set; } public string Lastname { get; set; } public string Email { get; set; } public string PhoneNumber { get; set; } public override string ToString() { return $&amp;quot;{ID}: {Firstname} {Lastname} - {Email} - {PhoneNumber}&amp;quot;; } }  نصب GenFu</description>
+    </item>
+    
+  </channel>
+</rss>
