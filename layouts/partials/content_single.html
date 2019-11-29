@@ -1,5 +1,5 @@
 <div class="post" {{ if .Site.Params.Rtl }}dir="rtl"{{ end }}>
-  <h1 class="postTitle">{{ .Title }}</h1>
+  <h1 class="postTitle">{{ .Title | markdownify }}</h1>
   {{ if ne .Params.showpagemeta false }}
   <div class="col-sm-12 col-md-12">
     <span class="text-left post-date meta">

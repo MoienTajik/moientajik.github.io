@@ -7,7 +7,7 @@
     {{ range .Data.Pages -}}
     <li>
         <span>
-            <a href="{{ .Permalink }}">{{ .Title }}</a> &nbsp; » &nbsp;
+            <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a> &nbsp; » &nbsp;
             {{ if not .Date.IsZero }}
             <time class="post-list" style="font-size: 14px;">
 				<script>
