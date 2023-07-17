@@ -1,21 +1,19 @@
-<h1 class="title" {{ if .Site.Params.Rtl }}dir="rtl"{{ end }}>
-	{{ if eq .URL "/posts/" }} مقالات {{ end }}
-	{{ if eq .URL "/tags/" }} تگ ها {{ end }}
+<h1 class="title">
+	{{ if eq .RelPermalink "/posts/" }} Posts {{ end }}
+	{{ if eq .RelPermalink "/tags/" }} Tags {{ end }}
 </h1><hr>
 
-<ul class="posts" {{ if .Site.Params.Rtl }}dir="rtl"{{ end }}>
+<ul class="posts">
     {{ range .Data.Pages -}}
-    <li>
-        <span>
-            <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a> &nbsp; » &nbsp;
+    <li class="post-item">
+        <div class="post-content">
+            <a class="post-title" href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
             {{ if not .Date.IsZero }}
-            <time class="post-list" style="font-size: 14px;">
-				<script>
-					document.write("تاریخ انتشار : " + JDate({{ .Date.Format (.Site.Params.dateformat) }}).toString());
-				</script>
-            </time>    
-            {{end}}
-        </span>
+            <time class="{{ if or (eq $.RelPermalink "/posts/") (eq $.RelPermalink "/tags/") }}post-date margin-left-50px{{ else }}post-date{{ end }}" style="font-size: 14px;">
+            Publish Date: {{ .Date | time.Format ":date_medium" }}
+            </time>
+            {{ end }}
+        </div>
     </li>
     {{- end }}
 </ul>
