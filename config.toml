@@ -1,5 +1,5 @@
 ## Basic Configuration
-title = "Moien Tajik's Blog | وبلاگ معین تاجیک"
+title = "Moien Tajik"
 baseURL = "/"
 languageCode = "en"
 paginate = 10

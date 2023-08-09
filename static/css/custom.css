@@ -185,3 +185,13 @@ ul.pagination li>a[aria-label="Previous"] {
 .margin-left-50px {
     margin-left: 50px;
 }
+
+.post-image {
+    margin: auto;
+    margin-left: 20%;
+}
+
+.custom-linebreak {
+    display: block;
+    height: 10px;
+}

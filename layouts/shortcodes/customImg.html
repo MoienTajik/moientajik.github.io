@@ -1,0 +1,8 @@
+{{ $img := .Page.Resources.GetMatch (.Get "src") }}
+{{ with $img }}
+    <img src="{{ .RelPermalink }}" 
+         width="{{ $.Get "width" }}" 
+         class="post-image">
+{{ else }}
+    <p>Error: Image not found!</p>
+{{ end }}
