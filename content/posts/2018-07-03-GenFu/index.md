@@ -7,6 +7,8 @@ imageUrl: "/img/posts/2018-07-03-GenFu/GenFu.png"
 weight: 1
 ---
 
+{{< customImg src="GenFu.png" width="300px" >}}
+
 Sometimes, a great deal of time is wasted and a large amount of redundant code is generated when creating random data, especially when writing tests. A library named **GenFu** has been created that takes on the responsibility of creating random data. This library is open source, and you can find its source code on [GitHub](https://github.com/MisterJames/GenFu).
 
 In this post, we intend to create random data for the following class:

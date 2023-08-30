@@ -66,4 +66,3 @@ public class Data
 After making the changes and rerunning the program, the way the class values are displayed during debugging session will change:
 
 {{< customImg src="2.png" width="400px" >}}
-<img src="/img/posts/2018-07-05-DebuggerTypeProxy/2.png" width="400px" style="margin:auto;">

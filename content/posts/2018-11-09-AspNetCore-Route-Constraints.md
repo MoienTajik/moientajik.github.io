@@ -120,9 +120,7 @@ app.UseMvc(routes =>
 ```
 
 **\*** This way of using constraints is not possible in Attribute Routing.
-
   
-
 ----------
 
 ### Creating a custom constraint
