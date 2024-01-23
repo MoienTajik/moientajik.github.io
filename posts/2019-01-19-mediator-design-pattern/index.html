@@ -1,0 +1,138 @@
+<!doctype html><html lang=en class="wf-firasans-n4-active wf-active"><head><link href=http://gmpg.org/xfn/11 rel=profile><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=generator content="Hugo 0.121.0"><title>Design Patterns - Mediator &#183; Moien Tajik</title>
+<meta content="Moien Tajik" property="og:site_name"><meta content="Design Patterns - Mediator - Moien Tajik" property="og:title"><meta content="The Mediator design pattern encapsulates how multiple objects communicate within itself." property="og:description"><meta content="/img/posts/2019-01-18-Mediator-Design-Pattern/mediator.jpg" property="og:image"><link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel=stylesheet><style media=print>.sidebar{display:none!important}.container,.content{width:100%;float:none;display:initial;margin:0 auto}.container{padding-left:1rem;padding-right:1rem}</style><link rel=stylesheet href=/css/poole.css><link rel=stylesheet href=/css/hyde.css><link rel=stylesheet href=/css/custom.css><script defer src=https://use.fontawesome.com/releases/v5.0.13/js/all.js integrity=sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe crossorigin=anonymous></script><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js></script><script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]--><link rel=apple-touch-icon-precomposed sizes=144x144 href=/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=/favicon.png></head><body class=theme-base-te><div class=sidebar><div class="container text-center"><div class="sidebar-about text-center"><img src=/img/Moien%20Tajik.png alt="Moien Tajik's Image" class="img-circle headshot center">
+<a href=/ class=no-decoration><h1 class=brand>Moien Tajik</h1></a><p class=lead>Principal Software Engineer</p></div><div><ul class=sidebar-nav><li><a href=/><span>Home</span></a></li><li><a href=/posts/><span>Posts</span></a></li><li><a href=/tags/><span>Tags</span></a></li></li></ul></div><p><section class="row text-center"><a href=https://twitter.com/MoienTajik><i class="fab fa-twitter fa-lg" aria-hidden=true></i></a>
+&nbsp;<a href=https://github.com/MoienTajik><i class="fab fa-github fa-lg" aria-hidden=true></i></a>
+&nbsp;<a href=https://linkedin.com/in/MoienTajik><i class="fab fa-linkedin fa-lg" aria-hidden=true></i></a>
+&nbsp;<a href=https://stackoverflow.com/story/moientajik><i class="fab fa-stack-overflow fa-lg" aria-hidden=true></i></a>
+&nbsp;<a href=https://medium.com/@MoienTajik><i class="fab fa-medium fa-lg" aria-hidden=true></i></a>
+&nbsp;<a href=mailto:moientajik@hotmail.com><i class="fas fa-at fa-lg" aria-hidden=true></i></a></section></p><p class=copyright>&copy; 2024 Moien Tajik</br><a href=https://creativecommons.org/licenses/by/4.0>All rights reserved</a></p></div><div></div></div><div class="content container"><div class=post><h1 class=postTitle>Design Patterns - Mediator</h1><div class="col-sm-12 col-md-12"><span class="text-left post-date meta"><i class="fas fa-calendar-alt"></i> <span class=subtitle>Publish Date: Jan 19, 2019</span><br><i class="fas fa-tags"></i>
+Tags:
+<a class=meta href=/tags/c>c#</a>
+,
+<a class=meta href=/tags/designpatterns>designpatterns</a>
+,
+<a class=meta href=/tags/mediator>mediator</a>
+,
+<a class=meta href=/tags/patterns>patterns</a><br></span></div><hr><p>The Mediator design pattern encapsulates how multiple objects communicate within itself.</p><img src=/posts/2019-01-19-mediator-design-pattern/mediator.jpg width=700px class=post-image><h4 id=a-real-world-example-of-this-pattern>A real-world example of this pattern</h4><p>Consider an airport control tower. This unit is aware of all the planes in transit and is responsible for managing their flights, issuing takeoff and landing permissions. If landing permission is not granted, the plane is not allowed to land.</p><p><div class=custom-linebreak></div>Continuing with the above scenario, we implement it in code:</p><p>First, we create an interface called <code>IAirTrafficControl</code> (Air Traffic Control Tower) that has a method named <code>SendMessage</code> responsible for sending messages from one airplane to another and also for adding (registering) airplanes to itself:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C# data-lang=C#><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>IAirTrafficControl</span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> AddAirplanes(<span style=color:#66d9ef>params</span> AirplaneBase[] airplanes);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> SendMessage(<span style=color:#66d9ef>string</span> message, AirplaneBase messageProducerAirplane);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><div class=custom-linebreak></div><div class=custom-linebreak></div>All airplanes inherit from an abstract class named <code>AirplaneBase</code>, which needs an <code>IAirTrafficControl</code> object for its instantiation:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C# data-lang=C#><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>abstract</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AirplaneBase</span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>protected</span> <span style=color:#66d9ef>readonly</span> IAirTrafficControl AirTrafficControl;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> AirplaneBase(IAirTrafficControl airTrafficControl)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        AirTrafficControl = airTrafficControl;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>abstract</span> <span style=color:#66d9ef>void</span> Send(<span style=color:#66d9ef>string</span> message);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>abstract</span> <span style=color:#66d9ef>void</span> Notify(<span style=color:#66d9ef>string</span> message);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>This class has two methods <code>Send</code> and <code>Notify</code>. The <code>Send</code> method is responsible for sending a message from one airplane to another, while the <code>Notify</code> method acknowledges receiving a message from another airplane.</p><p><div class=custom-linebreak></div>Next, we create two airplanes that implement <code>AirplaneBase</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C# data-lang=C#><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AirbusAirplane</span> : AirplaneBase
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> AirbusAirplane(IAirTrafficControl airTrafficControl) : <span style=color:#66d9ef>base</span>(airTrafficControl)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>void</span> Send(<span style=color:#66d9ef>string</span> message)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        Console.WriteLine(<span style=color:#e6db74>&#34;Airbus airplane sends message: &#34;</span> + message);
+</span></span><span style=display:flex><span>        AirTrafficControl.SendMessage(message, <span style=color:#66d9ef>this</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>void</span> Notify(<span style=color:#66d9ef>string</span> message)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        Console.WriteLine(<span style=color:#e6db74>&#34;Airbus airplane gets message: &#34;</span> + message);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>BoeingAirplane</span> : AirplaneBase
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> BoeingAirplane(IAirTrafficControl airTrafficControl) : <span style=color:#66d9ef>base</span>(airTrafficControl)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>void</span> Send(<span style=color:#66d9ef>string</span> message)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        Console.WriteLine(<span style=color:#e6db74>&#34;Boeing airplane sends message: &#34;</span> + message);
+</span></span><span style=display:flex><span>        AirTrafficControl.SendMessage(message, <span style=color:#66d9ef>this</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>void</span> Notify(<span style=color:#66d9ef>string</span> message)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        Console.WriteLine(<span style=color:#e6db74>&#34;Boeing airplane gets message: &#34;</span> + message);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><div class=custom-linebreak></div><div class=custom-linebreak></div>Finally, we need a concrete class that implements <code>IAirTrafficControl</code>, holds a list of airplanes, and manages communication between them. This is the primary class in this pattern that defines how communication between airplanes should occur:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C# data-lang=C#><span style=display:flex><span><span style=color:#75715e>// This is our Mediator which maintains communications</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>JFKAirTrafficControl</span> : IAirTrafficControl
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>readonly</span> List&lt;AirplaneBase&gt; _airplanes = <span style=color:#66d9ef>new</span> List&lt;AirplaneBase&gt;();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> AddAirplanes(<span style=color:#66d9ef>params</span> AirplaneBase[] airplanes)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        _airplanes.AddRange(airplanes);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> SendMessage(<span style=color:#66d9ef>string</span> message, AirplaneBase messageProducerAirplane)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        List&lt;AirplaneBase&gt; otherAirplanes = _airplanes
+</span></span><span style=display:flex><span>            .Where(airplane =&gt; airplane != messageProducerAirplane)
+</span></span><span style=display:flex><span>            .ToList();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        otherAirplanes.ForEach(airplane =&gt; airplane.Notify(message));
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><div class=custom-linebreak></div><div class=custom-linebreak></div>Ultimately, you can test the program as follows:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C# data-lang=C#><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Program</span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>async</span> Task Main()
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        IAirTrafficControl jfkAirTrafficControl = <span style=color:#66d9ef>new</span> JFKAirTrafficControl();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        AirplaneBase airbusAirplane = <span style=color:#66d9ef>new</span> AirbusAirplane(jfkAirTrafficControl);
+</span></span><span style=display:flex><span>        AirplaneBase boeingAirplane = <span style=color:#66d9ef>new</span> BoeingAirplane(jfkAirTrafficControl);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        jfkAirTrafficControl.AddAirplanes(airbusAirplane, boeingAirplane);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        airbusAirplane.Send(<span style=color:#e6db74>&#34;Can we land right now ?&#34;</span>);
+</span></span><span style=display:flex><span>        Console.WriteLine(<span style=color:#e6db74>&#34;----------&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        boeingAirplane.Send(<span style=color:#e6db74>&#34;No! we&#39;re landing, wait ...&#34;</span>);
+</span></span><span style=display:flex><span>        Console.WriteLine(<span style=color:#e6db74>&#34;----------&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Demonstrate landing ...</span>
+</span></span><span style=display:flex><span>        Console.WriteLine(<span style=color:#e6db74>&#34;Boeing is landing ...&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>await</span> Task.Delay(TimeSpan.FromSeconds(<span style=color:#ae81ff>3</span>));
+</span></span><span style=display:flex><span>        Console.WriteLine(<span style=color:#e6db74>&#34;----------&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        boeingAirplane.Send(<span style=color:#e6db74>&#34;Landed.&#34;</span>);
+</span></span><span style=display:flex><span>        Console.WriteLine(<span style=color:#e6db74>&#34;----------&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        airbusAirplane.Send(<span style=color:#e6db74>&#34;OK, we&#39;re going to land ...&#34;</span>);
+</span></span><span style=display:flex><span>        Console.WriteLine(<span style=color:#e6db74>&#34;----------&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        boeingAirplane.Send(<span style=color:#e6db74>&#34;Good luck.&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Results =&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Airbus airplane sends message: Can we land right now ?</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Boeing airplane gets message: Can we land right now ?</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// ----------</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Boeing airplane sends message: No! we&#39;re landing, wait ...</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Airbus airplane gets message: No! we&#39;re landing, wait ...</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// ----------</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Boeing is landing ...</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// ----------</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Boeing airplane sends message: Landed.</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Airbus airplane gets message: Landed.</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// ----------</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Airbus airplane sends message: OK, we&#39;re going to land ...</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Boeing airplane gets message: OK, we&#39;re going to land ...</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// ----------</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Boeing airplane sends message: Good luck.</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Airbus airplane gets message: Good luck.</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><div class=custom-linebreak></div><strong>GitHub project:</strong> <a href=https://github.com/MoienTajik/DesignPatterns-Mediator>https://github.com/MoienTajik/DesignPatterns-Mediator</a></p></div><hr><div class=footer><script src=//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js></script><script type=text/javascript>hljs.configure({languages:[]}),hljs.initHighlightingOnLoad()</script><h2>Comments</h2><div id=disqus_thread></div><script type=text/javascript>(function(){if(location.hostname==="localhost"||location.hostname==="127.0.0.1"||location.hostname==="")return;var t,e=document.createElement("script");e.type="text/javascript",e.async=!0,t="moientajik",e.src="//"+t+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)})()</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div></div></body></html>
