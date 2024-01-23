@@ -1,7 +1,7 @@
 ## Basic Configuration
-title = "Moien Tajik's Blog | وبلاگ معین تاجیک"
+title = "Moien Tajik"
 baseURL = "/"
-languageCode = "fa"
+languageCode = "en"
 paginate = 10
 
 ## Hugo Built-in Features
@@ -15,16 +15,14 @@ enableRobotsTXT = true
   filename = "sitemap.xml"
 
 [params]
-  about="Moien Tajik is a software developer with more than 5 years of experience in developing applications."
+  about="Moien Tajik is a principal software developer with more than 8 years of experience in developing enterprise scalable applications."
   themeColor="theme-base-te"
   author = "Moien Tajik"
-  authorPersian="معین تاجیک"
-  description = "توسعه دهنده نرم افزار"
+  description = "Principal Software Engineer"
   authorimage = "/img/Moien Tajik.png"
   dateformat = "01/02/2006"
   highlightjs = true
   highlightjsstyle = "atom-one-dark"
-  rtl=true
   
 ## Social Accounts
 [params.social]
@@ -33,22 +31,26 @@ enableRobotsTXT = true
   linkedin="MoienTajik"
   stackoverflow="moientajik"
   email = "moientajik@hotmail.com"
-  keybase="moientajik"
   medium="MoienTajik"
   
 ## Main Menu
 [[menu.main]]
-    name = "خانه"
+    name = "Home"
     weight = 100
     identifier = "home"
     url = "/"
 [[menu.main]]
-    name = "مقالات"
+    name = "Posts"
     weight = 200
     identifier = "posts"
     url = "/posts/"
 [[menu.main]]
-    name = "تگ ها"
+    name = "Tags"
     weight = 300
     identifier = "tags"
     url = "/tags/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
