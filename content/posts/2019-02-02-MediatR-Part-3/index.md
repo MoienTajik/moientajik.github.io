@@ -5,6 +5,7 @@ date: "2019-02-02T00:00:00+03:30"
 description: "This series explores the implementation of the CQRS design pattern using the MediatR library."
 imageUrl: "/PubSub.jpg"
 weight: 1
+summary: "Part 3 of the CQRS with MediatR series focuses on adding validation and event handling. Fluent Validation is introduced to validate commands, followed by the use of `INotification` and `INotificationHandler` for event handling, illustrated with a `CustomerCreatedEvent`. This setup allows for separate event handlers for different actions like email notifications and logging, adhering to the **Single Responsibility Principle**. The tutorial provides code examples for integrating these features into an ASP.NET Core application, setting the stage for the next part on MediatR behaviors and aspect-oriented programming."
 ---
 
 In the [previous post](https://moien.dev/posts/2019-01-27-mediatr-part-2), we examined how to use `IRequest` and `IRequestHandler` in MediatR, which are responsible for implementing the Command/Query roles in CQRS. The code for this part is updated and available in this [repository](https://github.com/MoienTajik/MediatrTutorial).

@@ -5,6 +5,7 @@ date: "2019-11-29T21:00:00+03:30"
 description: "In this series of articles, we aim to dive into Memory Management in C#, acquaint ourselves with the Garbage Collector, and gain an overall understanding of how it operates."
 imageUrl: "./GC.jpg"
 weight: 1
+summary: "This article explores memory management in C# and the garbage collector's role. It differentiates **managed** languages like C# from **unmanaged** ones like C and C++, highlighting C#'s automatic memory management. Using a simple example, the article shows how C# frees developers from the complexities of manual memory allocation and disposal, allowing them to focus more on business logic. The series aims to provide a comprehensive understanding of the garbage collector in C#, demonstrating its efficiency in managing memory in managed programming environments."
 ---
 
 <br>

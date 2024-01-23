@@ -21,13 +21,16 @@
 						Publish Date: {{ .Date | time.Format ":date_medium" }}
 					</span>
 				</span>
-				{{ .Summary }}
 
-				{{ if .Truncated }}
-					<div class="read-more-link">
-						<a href="{{ .RelPermalink }}">Read more ...</a>
-					</div>
-				{{ end }}
+				{{ with .Params.summary }}
+					{{ . | markdownify }}
+                {{ else }}
+                    {{ .Summary }}
+                {{ end }}
+
+				<div class="read-more-link">
+					<a href="{{ .RelPermalink }}">Read more ...</a>
+				</div>
 			</div><hr>
 		{{- end }}
 	</div>
@@ -35,4 +38,5 @@
 {{- end }}
 
 {{ define "footer" -}}
+	{{ partial "highlight.html" . }}
 {{- end }}

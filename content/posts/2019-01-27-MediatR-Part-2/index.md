@@ -5,6 +5,7 @@ date: "2019-01-27T00:00:00+03:30"
 description: "This series explores the implementation of the CQRS design pattern using the MediatR library."
 imageUrl: "/Hollywood.jpg"
 weight: 1
+summary: "Discover the practical implementation of the CQRS pattern using MediatR in ASP.NET Core. This tutorial guides you through setting up MediatR, creating commands and queries with the `IRequest` interface, and handling them with `IRequestHandler`. It features a real-world example of adding a customer to a database, showcasing command creation, immutability, and the use of Entity Framework and AutoMapper. The article emphasizes decoupling in request handling, aligning with the **Hollywood Principle**, and provides a glimpse into future topics like Fluent Validation. A must-read for developers looking to enhance their CQRS skills."
 ---
 
 You can find the source-code for this section of the article in [this GitHub repository](https://github.com/MoienTajik/MediatrTutorial).

@@ -5,6 +5,7 @@ date: "2019-12-12T23:00:00+03:30"
 description: "In this series of articles, we aim to dive into Memory Management in C#, acquaint ourselves with the Garbage Collector, and gain an overall understanding of how it operates."
 imageUrl: "./Heap.jpg"
 weight: 1
+summary: "This article delves into the distinction between **Stack** and **Heap** in C# memory management. It explains how the stack, with its `LIFO` method, stores value types like structs and enums, while the heap handles reference types like `strings`. Key concepts like **boxing** and **unboxing** are covered, showing how value types can be converted to reference types and vice versa. The article emphasizes the importance of efficient memory management and the role of the garbage collector in .NET, particularly in managing heap memory and optimizing overall application performance."
 ---
 
 In this article, we will explore the differences between **Stack** and **Heap** in memory, particularly in the context of C#.

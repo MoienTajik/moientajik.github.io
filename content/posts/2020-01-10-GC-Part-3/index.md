@@ -5,6 +5,16 @@ date: "2020-01-10T20:00:00+03:30"
 description: "In this series of articles, we aim to dive into Memory Management in C#, acquaint ourselves with the Garbage Collector, and gain an overall understanding of how it operates."
 imageUrl: "./WS-GC.png"
 weight: 1
+summary: "This article in the C# garbage collector series outlines the history and types of GC in .NET. It covers three GC modes:
+<br>
+
+<ol>
+  <li><b>Server GC</b> for server-side applications</li>
+  <li><b>Concurrent Workstation GC</b> for client apps with UI</li>
+  <li><b>Non-Concurrent Workstation GC</b> for single-processor server apps</li>
+</ol>
+
+Each mode is optimized for different scenarios, balancing throughput and responsiveness. The article provides insights into configuring these modes for specific applications, highlighting the importance of choosing the right GC mode based on the application's nature and environment."
 ---
 
 In the previous [article](https://moien.dev/posts/2019-12-12-gc-part-2), we discussed the differences between stack and heap and concluded that for freeing heap memory without manual intervention, we require the **garbage collector**.

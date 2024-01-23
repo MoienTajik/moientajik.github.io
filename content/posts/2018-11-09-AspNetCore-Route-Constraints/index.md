@@ -5,6 +5,14 @@ date: "2018-11-09T00:00:00+03:30"
 description: "In ASP.NET Core, Route constraints prevent invalid values from reaching the parameters of a controller's action."
 imageUrl: "/img/posts/2018-11-09-AspNetCore-Route-Constraints/routing.png"
 weight: 1
+summary: "This article covers implementing **route constraints** in ASP.NET Core to validate route parameter values. It highlights two methods: 
+
+<ol>
+    <li>Inline constraints: using route templates directly</li>
+    <li>MapRoute constraints: using classes that follow the <code>IRouteConstraint</code> interface</li>
+</ol>
+
+The article also describes creating custom constraints for specific validation needs, such as checking if a string starts with a particular value. This feature in ASP.NET Core ensures that only valid values are passed to action methods, enhancing API reliability and functionality."
 ---
 
 Route constraints in ASP.NET Core allow you to prevent invalid values from reaching the parameters of an action method within a controller.

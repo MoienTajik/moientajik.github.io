@@ -5,6 +5,7 @@ date: 2019-10-16
 description: "C# Internals - Single and SingleOrDefault"
 imageUrl: "./WrongAssumption.jpg"
 weight: 1
+summary: "This article demystifies the LINQ methods `Single` and `SingleOrDefault` in C#, addressing the misconception that they always traverse an entire `Enumerable`. It explains the actual behavior of these methods, both with and without a predicate, contrasting them with `First` and `FirstOrDefault`. The article clarifies that `SingleOrDefault` efficiently handles different scenarios, such as returning a default value, the only item, or throwing an error when multiple items exist. It emphasizes the operational differences and efficiency **O(1)** without predicate and **O(N)** with predicate of these methods, offering valuable insights for C# developers seeking to optimize their code."
 ---
 
 Many developers occasionally use the LINQ methods `First` and `FirstOrDefault` as substitutes for `Single` and `SingleOrDefault`. This practice stems from the belief that `Single` traverses "all" items in an Enumerable to find the result, whereas `First` and `FirstOrDefault` do not need to traverse the entire Enumerable, making them faster.

@@ -5,6 +5,7 @@ date: "2018-07-03T00:00:00+03:30"
 description: "Generate random data using GenFu in C#"
 imageUrl: "/img/posts/2018-07-03-GenFu/GenFu.png"
 weight: 1
+summary: "Sometimes, a great deal of time is wasted and a large amount of redundant code is generated when creating random data, especially when writing tests. A library named GenFu has been created that takes on the responsibility of creating random data. This library is open source, and you can find its source code on GitHub."
 ---
 
 {{< customImg src="GenFu.png" width="300px" >}}

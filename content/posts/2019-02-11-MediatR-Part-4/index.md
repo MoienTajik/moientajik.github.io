@@ -5,6 +5,10 @@ date: "2019-02-11T00:00:00+03:30"
 description: "This series explores the implementation of the CQRS design pattern using the MediatR library."
 imageUrl: "/dry.png"
 weight: 1
+summary: "In this part of the CQRS with MediatR series, *behaviors* in MediatR are introduced for **aspect-oriented programming**. The tutorial covers two specific behaviors: <br> 
+<li>Performance counter behavior: for logging method execution times.</li>
+<li>Transaction behavior: for managing database transactions and rollbacks.</li><br>
+Both are implemented using the `IPipelineBehavior` interface, demonstrating how to write reusable, efficient code that adheres to the **DRY** principle. The article provides practical examples and code snippets, showing how these behaviors enhance functionality and error handling in an ASP.NET Core application."
 ---
 
 In this part, we aim to explore [Behaviors](https://github.com/jbogard/MediatR/wiki/Behaviors) in the MediatR framework. The code for this part is updated and accessible from this [repository](https://github.com/MoienTajik/MediatrTutorial).

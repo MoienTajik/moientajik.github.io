@@ -5,6 +5,7 @@ date: "2019-02-24T00:00:00+03:30"
 description: "This series explores the implementation of the CQRS design pattern using the MediatR library."
 imageUrl: "/EventStore.png"
 weight: 1
+summary: "Part 5 of the CQRS with MediatR series introduces *Event Sourcing* using **EventStore**. It focuses on integrating EventStore into an ASP.NET Core application, highlighted by creating the `EventStoreDbContext` class. The tutorial showcases the `EventLoggerBehavior` in MediatR for logging Command actions and responses, utilizing a **Convention over Configuration** approach. This part provides a practical guide for effectively tracking and understanding system state changes in a CQRS application through event history."
 ---
 
 The code for this section has been updated and can be accessed from this [repository](https://github.com/MoienTajik/MediatrTutorial).
