@@ -1,6 +1,6 @@
 ## Basic Configuration
 title = "Moien Tajik"
-baseURL = "/"
+baseURL = "https://moien.dev/"
 languageCode = "en"
 paginate = 10
 

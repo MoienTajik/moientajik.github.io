@@ -1,27 +1,33 @@
 name: MoienTajik
+
 on:
   push:
     branches:
-    - dev
+      - master
 
 jobs:
-  build-deploy:
-    runs-on: ubuntu-18.04
+  deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-    - uses: actions/checkout@master
+      - uses: actions/checkout@v4
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v2.2.2
-      with:
-        hugo-version: '0.57.2'
-        extended: true
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.121.0'
+          extended: true
 
-    - name: Build
-      run: hugo
+      - name: Build
+        run: hugo --minify
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.5.0
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: master
-        PUBLISH_DIR: ./public
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.9.3
+        if: github.ref == 'refs/heads/master'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
