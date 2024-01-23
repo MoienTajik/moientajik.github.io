@@ -49,3 +49,8 @@ enableRobotsTXT = true
     weight = 300
     identifier = "tags"
     url = "/tags/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
