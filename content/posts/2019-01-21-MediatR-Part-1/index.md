@@ -5,6 +5,7 @@ date: "2019-01-21T00:00:00+03:30"
 description: "This series explores the implementation of the CQRS design pattern using the MediatR library."
 imageUrl: "/Mediator.jpg"
 weight: 1
+summary: "This article dives into the implementation of the **CQRS** design pattern using the MediatR library in .NET, simplifying its complexity. It explains the division of application methods into `Command` and `Query` functions, highlighting the benefits of this separation for technology choice and scalability. The piece also touches on the concept of events and **Event Sourcing**, showcasing their roles in maintaining system states and facilitating troubleshooting. The use of the **Event Store** database for implementing Event Sourcing is briefly introduced, offering a comprehensive view of the CQRS pattern and its practical application."
 ---
 
 {{< customImg src="Mediator.jpg" width="400px" >}}

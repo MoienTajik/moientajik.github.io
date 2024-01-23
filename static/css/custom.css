@@ -1,11 +1,11 @@
-@import url(fontiran.css);
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 
 html,
 body
 {
-    font-family: IRANSans !important;
+    font-family: 'Fira Sans' !important;
     font-size: 16.3px !important;
-    font-weight: 300;
+    font-weight: 200;
     line-height: 1.5;
 	overflow-x: hidden;
 }
