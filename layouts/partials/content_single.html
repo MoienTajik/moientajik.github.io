@@ -17,7 +17,7 @@
             Tags:
             {{ range $i, $tag := sort . }}
                 {{ if gt $i 0 }},{{ end }}
-                <a class="meta" href="{{ "/tags/" | relURL }}{{ $tag | urlize }}">{{ $tag | lower }}</a>{{ if lt $i $subtotal }}
+                <a class="meta" href="{{ if eq $tag "C#" }}/tags/c%23/{{ else }}{{ "/tags/" | relURL }}{{ $tag | urlize }}{{ end }}">{{ $tag | lower }}</a>{{ if lt $i $subtotal }}
             {{ end }}
         {{ end }}
       {{ end }}

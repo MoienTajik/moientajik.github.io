@@ -1,16 +1,20 @@
 <h1 class="title">
-	{{ if eq .RelPermalink "/posts/" }} Posts {{ end }}
-	{{ if eq .RelPermalink "/tags/" }} Tags {{ end }}
+    {{ if eq .RelPermalink "/posts/" }} Posts {{ end }}
+    {{ if eq .RelPermalink "/tags/" }} Tags {{ end }}
 </h1><hr>
 
 <ul class="posts">
     {{ range .Data.Pages -}}
     <li class="post-item">
         <div class="post-content">
-            <a class="post-title" href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
+            {{ $permalink := .Permalink }}
+            {{ if strings.Contains $permalink "c#" }}
+                {{ $permalink = replace $permalink "c#" "c%23" }}
+            {{ end }}
+            <a class="post-title" href="{{ $permalink }}">{{ .Title | markdownify }}</a>
             {{ if not .Date.IsZero }}
-            <time class="{{ if or (eq $.RelPermalink "/posts/") (eq $.RelPermalink "/tags/") }}post-date margin-left-50px{{ else }}post-date{{ end }}" style="font-size: 14px;">
-            Publish Date: {{ .Date | time.Format ":date_medium" }}
+            <time class="{{ if or (eq $.RelPermalink "/posts/") (strings.HasPrefix $.RelPermalink "/tags/") }}tag-date margin-left-50px{{ else }}post-date{{ end }}" style="font-size: 14px;">
+                Publish Date: {{ .Date | time.Format ":date_medium" }}
             </time>
             {{ end }}
         </div>

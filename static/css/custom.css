@@ -178,6 +178,11 @@ ul.pagination li>a[aria-label="Previous"] {
     flex-grow: 1;
 }
 
-.post-date {
+.tag-date {
     flex-shrink: 0;
+    color: #9a9a9a;
+}
+
+.margin-left-50px {
+    margin-left: 50px;
 }
