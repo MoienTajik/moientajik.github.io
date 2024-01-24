@@ -3,7 +3,7 @@ title: Design Patterns - Mediator
 tags: ["DesignPatterns", "Mediator", "C#", "Patterns"]
 date: 2019-01-19
 description: "The Mediator design pattern encapsulates how multiple objects communicate within itself."
-imageUrl: "/img/posts/2019-01-18-Mediator-Design-Pattern/mediator.jpg"
+imageUrl: "./mediator.jpg"
 weight: 1
 summary: "Explore the Mediator design pattern, illustrated through an airport control tower analogy. Learn how it manages communications between planes in **C#**, starting from the `IAirTrafficControl` interface to the implementation of `AirbusAirplane` and `BoeingAirplane` classes. The article concludes with the `JFKAirTrafficControl` class, demonstrating the pattern's role in facilitating effective object interaction. Ideal for those interested in applying design patterns in software engineering."
 

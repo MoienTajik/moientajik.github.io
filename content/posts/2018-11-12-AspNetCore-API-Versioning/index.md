@@ -3,7 +3,7 @@ title: API Versioning in ASP.NET Core
 tags: ["AspNet", "AspNetCore", "API", "Versioning"]
 date: "2018-11-12T00:00:00+03:30"
 description: "API Versioning in ASP.NET Core"
-imageUrl: "/img/posts/2018-11-12-AspNetCore-API-Versioning/ApiVersioning.png"
+imageUrl: "./ApiVersioning.png"
 weight: 1
 summary: "This article guides on implementing API versioning in ASP.NET Core, highlighting its simplicity compared to ASP.NET Web API. It covers installing the `Microsoft.AspNetCore.Mvc.Versioning` package, setting up default versioning, and various versioning methods including **URL path segment** and **header versioning**. <br><br> The article also discusses deprecating older API versions and excluding specific controllers from versioning using the `ApiVersionNeutral` attribute. The process is illustrated with concise examples and code snippets, offering a practical approach to API versioning in ASP.NET Core applications."
 ---

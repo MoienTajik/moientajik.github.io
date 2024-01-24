@@ -1,11 +1,11 @@
 ---
-title: Getting Started with DebuggerTypeProxy in Visual Studio
+title: Getting Started with DebuggerTypeProxy
 tags: ["VisualStudio", "Debug", "Debugger"]
 date: "2018-07-05T00:00:00+03:30"
-description:  "Getting Started with DebuggerTypeProxy in Visual Studio"
-imageUrl: "/img/posts/2018-07-05-DebuggerTypeProxy/2.png"
+description:  "Getting Started with DebuggerTypeProxy"
+imageUrl: "./2.png"
 weight: 1
-summary: "The article explains the use of `DebuggerTypeProxy` in Visual Studio for enhancing debugging. It illustrates how to display complex or less readable properties (like **Hex** values) in a more understandable format using a proxy class. By applying the `DebuggerTypeProxy` attribute to a class, the values are shown in the debugger in a customized way, as defined in the proxy class. This feature significantly improves the **debugging experience** by providing clearer insights into the data structures being inspected."
+summary: "The article explains the use of `DebuggerTypeProxy` for enhancing debugging. It illustrates how to display complex or less readable properties (like **Hex** values) in a more understandable format using a proxy class. By applying the `DebuggerTypeProxy` attribute to a class, the values are shown in the debugger in a customized way, as defined in the proxy class. This feature significantly improves the **debugging experience** by providing clearer insights into the data structures being inspected."
 ---
 
 The [DebuggerDisplay](https://learn.microsoft.com/en-us/visualstudio/debugger/using-the-debuggerdisplay-attribute) feature in Visual Studio has been introduced before. Another feature similar to this one is named **DebuggerTypeProxy**, which we will explore it below.
