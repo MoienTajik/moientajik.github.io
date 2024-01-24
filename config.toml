@@ -6,7 +6,7 @@ paginate = 10
 
 ## Hugo Built-in Features
 disqusShortname = "moientajik"
-# googleAnalytics = "your-google-analytics-id"
+googleAnalytics = "G-Y2XBPMY9EE"
 enableRobotsTXT = true
 
 [sitemap]
