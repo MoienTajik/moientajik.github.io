@@ -15,7 +15,7 @@ enableRobotsTXT = true
   filename = "sitemap.xml"
 
 [params]
-  about="Moien Tajik is a principal software developer with more than 8 years of experience in developing enterprise scalable applications."
+  about="Moien Tajik is a principal software engineer with more than 8 years of experience in developing enterprise scalable applications."
   themeColor="theme-base-te"
   author = "Moien Tajik"
   description = "Principal Software Engineer"
