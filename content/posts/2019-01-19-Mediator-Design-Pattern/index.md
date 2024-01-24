@@ -10,14 +10,12 @@ summary: "Explore the Mediator design pattern, illustrated through an airport co
 ---
 
 The Mediator design pattern encapsulates how multiple objects communicate within itself.
-
-{{< customImg src="mediator.jpg" width="700px" >}}
+<img src="./mediator.jpg" width="700px" alt="Mediator" style="margin:auto;">
 
 #### A real-world example of this pattern
 
 Consider an airport control tower. This unit is aware of all the planes in transit and is responsible for managing their flights, issuing takeoff and landing permissions. If landing permission is not granted, the plane is not allowed to land.
 
-{{<linebreak>}}
 Continuing with the above scenario, we implement it in code:
 
 First, we create an interface called `IAirTrafficControl` (Air Traffic Control Tower) that has a method named `SendMessage` responsible for sending messages from one airplane to another and also for adding (registering) airplanes to itself:
@@ -31,7 +29,6 @@ public interface IAirTrafficControl
 }
 ```
 
-{{<linebreak>}}{{<linebreak>}}
 All airplanes inherit from an abstract class named `AirplaneBase`, which needs an `IAirTrafficControl` object for its instantiation:
 
 ```C#
@@ -52,7 +49,6 @@ public abstract class AirplaneBase
 
 This class has two methods `Send` and `Notify`. The `Send` method is responsible for sending a message from one airplane to another, while the `Notify` method acknowledges receiving a message from another airplane.
 
-{{<linebreak>}}
 Next, we create two airplanes that implement `AirplaneBase`:
 
 ```C#
@@ -93,7 +89,6 @@ public class BoeingAirplane : AirplaneBase
 }
 ```
 
-{{<linebreak>}}{{<linebreak>}}
 Finally, we need a concrete class that implements `IAirTrafficControl`, holds a list of airplanes, and manages communication between them. This is the primary class in this pattern that defines how communication between airplanes should occur:
 
 ```C#
@@ -118,7 +113,6 @@ public class JFKAirTrafficControl : IAirTrafficControl
 }
 ```
 
-{{<linebreak>}}{{<linebreak>}}
 Ultimately, you can test the program as follows:
 
 ```C#
@@ -173,5 +167,6 @@ public static class Program
 }
 ```
 
-{{<linebreak>}}
+<br>
+
 **GitHub project:** https://github.com/MoienTajik/DesignPatterns-Mediator

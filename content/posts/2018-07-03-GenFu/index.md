@@ -8,7 +8,7 @@ weight: 1
 summary: "Sometimes, a great deal of time is wasted and a large amount of redundant code is generated when creating random data, especially when writing tests. A library named GenFu has been created that takes on the responsibility of creating random data. This library is open source, and you can find its source code on GitHub."
 ---
 
-{{< customImg src="GenFu.png" width="300px" >}}
+<img src="./GenFu.png" height="300px" alt="GenFu" style="margin:auto;">
 
 Sometimes, a great deal of time is wasted and a large amount of redundant code is generated when creating random data, especially when writing tests. A library named **GenFu** has been created that takes on the responsibility of creating random data. This library is open source, and you can find its source code on [GitHub](https://github.com/MisterJames/GenFu).
 

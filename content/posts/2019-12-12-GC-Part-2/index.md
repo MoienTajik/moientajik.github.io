@@ -63,8 +63,6 @@ public static int Add(int number1, int number2)
 }
 ```
 
-<br>
-
 In C#, during compile-time, the code is translated into IL (Intermediate Language), also known as MSIL (Microsoft Intermediate Language) or CIL (Common Intermediate Language). The structure of this language is stack-based, and understanding it helps us better comprehend the concept of the Stack.
 
 IL is the language understood and executed by CLR (Common Language Runtime), which is Microsoft's runtime. The source for Microsoft's runtime, formerly known as [CoreCLR](https://github.com/dotnet/coreclr) and now simply as Runtime, is open-source and available [here](https://github.com/dotnet/runtime).
@@ -75,11 +73,8 @@ Using programs like [dotPeek](https://www.jetbrains.com/decompiler), [dnSpy](htt
 C:\Program Files (x86)\Microsoft SDKs\Windows\{version}\Bin\ildasm.exe
 ```
 
-<br>
-
 As mentioned earlier, the lifespan of the Stack is limited to the duration of a method. The Stack created when calling a method, which includes the method's inputs, local variables, and return address, is known as a **Stack Frame** or **Activation Frame**.
 
-<br>
 <img src="./Stack-Structure.png" height="400px" alt="Stack Structure" style="margin:auto;">
 <br>
 
@@ -177,8 +172,6 @@ Variables whose values are stored in the Heap are known as reference types.
 
 <br>
 <img src="./Heap.png" height="450px" alt="Heap Structure" style="margin:auto;">
-<br>
-
 
 ----------
 

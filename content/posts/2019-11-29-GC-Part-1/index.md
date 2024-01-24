@@ -8,14 +8,10 @@ weight: 1
 summary: "This article explores memory management in C# and the garbage collector's role. It differentiates **managed** languages like C# from **unmanaged** ones like C and C++, highlighting C#'s automatic memory management. Using a simple example, the article shows how C# frees developers from the complexities of manual memory allocation and disposal, allowing them to focus more on business logic. The series aims to provide a comprehensive understanding of the garbage collector in C#, demonstrating its efficiency in managing memory in managed programming environments."
 ---
 
-<br>
-
-![Garbage Collection](./GC.jpg)
+<img src="./GC.jpg" alt="GC" style="margin:auto;">
 <div style="text-align: center;">
 	<span style="font-weight: bold;text-align: center;">Garbage Collection</span>
-</div>
-
-<br>
+</div><br>
 
 Imagine you have created a variable and assigned it a value:
 
@@ -28,12 +24,10 @@ Have you ever wondered about the lifespan of the message variable? When should i
 ----------
 
 Programming languages are divided into two categories: Managed and Unmanaged:
-  
 
 1.  **Unmanaged:** In these languages, the responsibility of object creation, determining the right time for their disposal, and their actual disposal rests on you. C and C++ are examples of unmanaged languages.
     
 2.  **Managed:** In these languages, you are still responsible for object creation, but the runtime takes over the responsibility of deciding and disposing of them at the right time. In such languages, we don't worry about deleting a variable we created several lines above, passed to several methods, and manipulated in various ways. C# and Java are examples of managed languages.
-
   
 The key idea behind managed languages is to free you from the complexities of memory management, allowing you to focus on the business logic.
   
@@ -44,12 +38,11 @@ This doesn't mean projects written in languages like C and C++ are inherently le
 <img src="./Legacy.jpeg" height="300px" alt="Legacy Code" style="margin:auto;">
 <br>
 
-Let's compare a simple example in both C and C#.
-
+### Let's compare a simple example in both C and C#
 
 We have a program that creates an integer variable, assigns the value 25 to it, and then passes this variable to a method for printing.
   
-C code:
+### C code:
 
 ```c
 #include <stdio.h>
@@ -80,9 +73,7 @@ int main(void)
 }
 ```
 
-  
 The "goal" and primary business of this program was to print a simple report, but more issues were involved:
-  
 
 1. Allocating memory for an integer using `malloc`. 
 2. Casting the returned void pointer to an int pointer.
@@ -95,7 +86,7 @@ The "goal" and primary business of this program was to print a simple report, bu
   
 How many of these steps were truly necessary for our program's business logic? This is a very simple and unrealistic example, but imagine the code volume and complexity for a large program with its own business rules and complexities.
   
-C# code:
+### C# code:
 
 ```csharp
 using System;
@@ -129,12 +120,10 @@ Usually, the main goal of driving is to go from point **A** to point **B**. With
 On the other hand, with an automatic car, all our focus is on reaching our destination. We are not involved in changing gears multiple times along the way, as an external engine handles this task. Although this method is easier than the manual approach, you naturally have less control than before.
 <br>
 
-### Similar differences exist between Managed and Unmanaged languages.
+### Similar differences exist in "Managed" and "Unmanaged" languages:
 
-<br>
+- **Unmanaged**: In these languages, you have full control over the lifespan of objects and memory management, but you are also involved in other side topics. The power of unmanaged languages is often seen in game engines and real-time processing systems, where memory management is done manually, and the developers determine the lifespan of objects to avoid any disruptions or slowdowns, even for a few milliseconds.
 
-In **Unmanaged** languages, you have full control over the lifespan of objects and memory management, but you are also involved in other side topics. The power of unmanaged languages is often seen in game engines and real-time processing systems, where memory management is done manually, and the developers determine the lifespan of objects to avoid any disruptions or slowdowns, even for a few milliseconds.
-
-In **Managed languages**, most of the time, you don't even need to get involved in the side topics of memory management, as your runtime automatically handles it. However, sometimes you need to identify sensitive parts of your program (so-called Hot-Paths), benchmark them, and ensure they perform well under high load and request volumes, and also that they don't have memory leaks. Sometimes a human (manual system) can decide better than an automatic system about what should happen in a program at a given moment.
+- **Managed**: In these languages, most of the time, you don't even need to get involved in the side topics of memory management, as your runtime automatically handles it. However, sometimes you need to identify sensitive parts of your program (so-called Hot-Paths), benchmark them, and ensure they perform well under high load and request volumes, and also that they don't have memory leaks. Sometimes a human (manual system) can decide better than an automatic system about what should happen in a program at a given moment.
 
 In this series of articles, we aim to delve into Memory Management in C#, acquaint ourselves with the Garbage Collector, and gain an overall understanding of how it operates.

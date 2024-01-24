@@ -16,9 +16,7 @@ The code for this section has been updated and can be accessed from this [reposi
 
 In this part, we intend to store our Command information in an append-only database after processing. By utilizing this [method](https://martinfowler.com/eaaDev/EventSourcing.html), we can understand at a **specific date**, with what inputs (request), what output (response) has been returned by the program at that moment.
 
-{{<linebreak>}}
-{{< customImg src="EventStore.png" >}}
-{{<linebreak>}}
+<img src="./EventStore.png" alt="EventStore" style="margin:auto;"><br>
 
 To implement Event Sourcing, we will use the [EventStore](https://eventstore.org/) database, the source of which is also available on [GitHub](https://github.com/EventStore/EventStore). Note that you can use other databases like Elasticsearch, Redis, etc., for your Event Store database and are not limited to EventStore.
   
@@ -31,7 +29,7 @@ docker run --name eventstore-node -d -p 2113:2113 -p 1113:1113 eventstore/events
 EventStore has an admin panel accessible through [http://localhost:2113](http://localhost:2113). The default username is `admin` and the password is `changeit`.
 
 After logging into the admin panel, you will encounter such a dashboard, indicating that EventStore has been successfully run:
-{{< customImg src="EventStore-Panel.png" >}}
+<img src="./EventStore-Panel.png" alt="EventStore-Panel" style="margin:auto;">
 
 ----------
 
@@ -41,7 +39,6 @@ To use EventStore in our application, like other packages, we install its nuget 
 Install-Package EventStore.Client
 ```
 
-{{<linebreak>}}
 Then we create a class named `EventStoreDbContext` and place the logic of connecting to EventStore within it:
 
 ```csharp
@@ -80,7 +77,7 @@ We intend to store the requests which are of type `Command`, along with their re
   
 This is a Convention in our program that must be observed. ([Convention over Configuration](https://www.danylkoweb.com/Blog/aspnet-mvc-convention-over-configuration-BU))
 
-{{< customImg src="CoC.png" width="300px" >}}
+<img src="./CoC.png" width="300px" alt="ConventionOverConfiguration" style="margin:auto;">
 
 ----------
 
@@ -136,17 +133,14 @@ public class EventLoggerBehavior<TRequest, TResponse> :
 }
 ```
 
-{{<linebreak>}}
 Using this behavior, we only store those requests which are **Commands** and change the program state, inside EventStore. Now, it’s enough to register this behavior to our DI container:
 
 ```csharp
 services.AddScoped(typeof(IPipelineBehavior<,>), typeof(EventLoggerBehavior<,>));
 ```
 
-{{<linebreak>}}
 If you run the program and call one of the commands like `CreateCustomerCommand`, using `POST api/customers`, your request and response along with the `type` of that Command and the `DateTime` when this request occurred, will be stored in EventStore, which can be viewed in the EventStore admin panel, under the *Stream Browser* tab:
 
-{{< customImg src="EventStore-Panel-Stream.png" width="300px" >}}
-{{<linebreak>}}
+<img src="./EventStore-Panel-Stream.png" alt="EventStore-Panel-Stream" style="margin:auto;"><br>
 
 The naming of this section as Stream, is due to the fact that we have a **history** of events occurred in the system, through which we can understand the current state and **how** we arrived at this state.

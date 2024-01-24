@@ -31,15 +31,11 @@ public class ValuesController : ControllerBase
 }
 ```
 
-{{<linebreak>}}
-
 By setting a breakpoint at the beginning of the action method, if you try to invoke this action with an alpha string, you'll notice that it doesn't hit the breakpoint, and routing doesn't occur. However, if called with a number, the routing successfully takes place and returns the input value, confirming that the constraint is functioning correctly.
 
 ✖  api/values/hi
 
 ✓ api/values/7
-
-{{<linebreak>}}
 
 You might wonder, how is this different from the following code?
 ```csharp
@@ -64,8 +60,6 @@ In this scenario, if you pass an alpha string as a parameter, routing **does occ
 ----------
 
 There are two ways to apply Route Constraints to URL parameters:
-
-####   
 
 ### 1- Inline constraints
 
@@ -101,8 +95,6 @@ public class ValuesController : ControllerBase
 ✖ api/values/abcdefghijk
 
 ✓ api/values/Moien
-
-  
 
 ### 2- MapRoute's constraints
 
@@ -170,7 +162,6 @@ public class StartsWithConstraint : IRouteConstraint
 }
 ```
 
-{{<linebreak>}}
 After creating your custom constraint, you need to register it in your DI container:
 
 ```csharp
@@ -178,7 +169,6 @@ services.Configure<RouteOptions>(opt =>
     opt.ConstraintMap.Add("startsWith", typeof(StartsWithConstraint)));
 ```
 
-{{<linebreak>}}
 Finally, use the name you gave during registration (in this case, `startsWith`) as your routing constraint:
 
 ```csharp

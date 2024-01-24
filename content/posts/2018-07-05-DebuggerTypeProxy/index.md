@@ -24,7 +24,7 @@ public class Data
 
 After executing the program, the values of the created class will be as follows:
 
-{{< customImg src="1.png" width="400px" >}}
+<img src="./1.png" width="400px" alt="DebuggerTypeProxy" style="margin:auto;">
 <br>
 
 Here, the Hex value is not understandable for us. Imagine a scenario where values need to be stored in the database in Hex format, but during debugging, we want to display the HexValue property in an understandable decimal form.
@@ -66,4 +66,4 @@ public class Data
 
 After making the changes and rerunning the program, the way the class values are displayed during debugging session will change:
 
-{{< customImg src="2.png" width="400px" >}}
+<img src="./2.png" width="400px" alt="DebuggerTypeProxy" style="margin:auto;">

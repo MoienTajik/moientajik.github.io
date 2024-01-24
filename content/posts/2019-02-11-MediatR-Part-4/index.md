@@ -49,14 +49,11 @@ public class SomeClass
 }
 ```
 
-{{<linebreak>}}
-
 With this approach, all methods requiring time calculation would need a logger injected into their class. A Stopwatch must be created, started, and stopped, and finally, we must evaluate whether the execution time exceeds the predetermined limit. 
   
 Moreover, imagine deciding one day to change the maximum time for logging from 5 seconds to 10 seconds. Because the snippet is repeated across all methods, you will have to modify the entire codebase, violating the [DRY (Don’t Repeat Yourself) principle](https://deviq.com/don-t-repeat-yourself).
   
-{{< customImg src="dry.png" width="400px" >}}
-{{<linebreak>}}
+<img src="./dry.png" width="400px" alt="DRY" style="margin:auto;"><br>
   
 To solve this issue, we use *Behaviors*. Implementing Behaviors in MediatR merely involves inheriting from an interface called `IPipelineBehavior`.
 
@@ -91,8 +88,6 @@ public class RequestPerformanceBehavior<TRequest, TResponse> :
 }
 ```
 
-{{<linebreak>}}
-
 As you can see, the logic of our code remains unchanged. We inherit from `IPipelineBehavior` and implement its `Handle` method. Like [Middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-2.2#write-middleware) in ASP.NET Core, we also have a `RequestHandlerDelegate` called `next`. By executing and returning it, the remaining Command/Query execution continues.
   
 We then register our custom Behaviors via DI in `Startup.cs`.
@@ -101,7 +96,6 @@ We then register our custom Behaviors via DI in `Startup.cs`.
 services.AddScoped(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehavior<,>));
 ```
 
-{{<linebreak>}}
 Finally, to test the functionality of this Behavior, we introduce a 5-second delay in our `GetCustomerByIdQueryHandler` to make the execution time exceed the specified maximum time for logging:
 
 ```csharp
@@ -134,19 +128,15 @@ public class GetCustomerByIdQueryHandler : IRequestHandler<GetCustomerByIdQuery,
 }
 ```
 
-{{<linebreak>}}
 After running the application and invoking `GetCustomerById`, you will see the following message in the console:
 
-{{< customImg src="delay.png" >}}
-{{<linebreak>}}
+<img src="./delay.png" alt="Delay" style="margin:auto;">
 
 ----------
 
 ### Transaction Behavior
 
-{{<linebreak>}}
-{{< customImg src="rollback.png" width="400px" >}}
-{{<linebreak>}}
+<img src="./rollback.png" width="400px" alt="Rollback" style="margin:auto;">
 
 Another usage for Behaviors could be implementing Transactions and Rollbacks. Imagine you want to add a customer to the database only if all tasks within the Command are successfully completed without throwing any exceptions. We can write a `TransactionBehavior` to wrap the Command bodies within a `TransactionScope` and roll back in case of an exception:
 
@@ -175,14 +165,12 @@ public class TransactionBehavior<TRequest, TResponse> :
 }
 ```
 
-{{<linebreak>}}
 This `Behavior` is then registered in our DI container:
 
 ```csharp
 services.AddScoped(typeof(IPipelineBehavior<,>), typeof(TransactionBehavior<,>));
 ```
 
-{{<linebreak>}}
 Finally, we modify the `Handle` method in `CreateCustomerCommandHandler` that we created in the previous sections. After the `SaveChanges` related to EF-Core, we throw an Exception.
 
 ```csharp
@@ -218,7 +206,6 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
 }
 ```
 
-{{<linebreak>}}
 If you run the application, you will see that even though our exception occurs after `SaveChanges`, the operation is rolled back due to the Transaction Behavior we've written, and no record is registered in the database.
 
 **Note:** Before utilizing Transactions, make sure to read these articles ([1](https://blogs.msdn.microsoft.com/dbrowne/2010/06/03/using-new-transactionscope-considered-harmful), [2](https://particular.net/blog/transactionscope-and-async-await-be-one-with-the-flow)).

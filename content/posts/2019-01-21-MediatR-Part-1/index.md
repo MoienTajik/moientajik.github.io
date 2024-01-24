@@ -8,7 +8,7 @@ weight: 1
 summary: "This article dives into the implementation of the **CQRS** design pattern using the MediatR library in .NET, simplifying its complexity. It explains the division of application methods into `Command` and `Query` functions, highlighting the benefits of this separation for technology choice and scalability. The piece also touches on the concept of events and **Event Sourcing**, showcasing their roles in maintaining system states and facilitating troubleshooting. The use of the **Event Store** database for implementing Event Sourcing is briefly introduced, offering a comprehensive view of the CQRS pattern and its practical application."
 ---
 
-{{< customImg src="Mediator.jpg" width="400px" >}}
+<img src="./Mediator.jpg" width="400px" alt="Mediator" style="margin:auto;">
 
 Implementing the CQRS pattern, although possible with ready-to-use libraries like [SimpleCQRS](https://github.com/tyronegroves/SimpleCQRS), can be complex and code-intensive.
 
@@ -24,7 +24,6 @@ In CQRS, application methods are divided into two categories: **Read** and **Wri
   
 **Note:** Commands usually have imperative naming conventions, e.g., RegisterUser, SendForgottenPasswordEmail, PlaceOrder.
 
-{{<linebreak>}}
 **Advantages:**
 
 1- You can easily separate the technologies used for the Command and Query sides of your application. For example, Apache Cassandra is a reliable (Write Side), while ElasticSearch excels in data retrieval due to its exceptional speed and complex query capabilities.
@@ -33,7 +32,6 @@ In CQRS, application methods are divided into two categories: **Read** and **Wri
 
 3- The separation enables you to focus on different parts of your application more distinctly. Each side, Command and Query, can be modified without affecting the other.  
 
-{{<linebreak>}}
 **Drawbacks:**
 
 The main criticisms of this pattern is its implementation complexity. However, we aim to simplify this complexity using MediatR.

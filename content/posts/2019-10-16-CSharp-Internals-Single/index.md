@@ -12,7 +12,7 @@ Many developers occasionally use the LINQ methods `First` and `FirstOrDefault` a
 
 However, replacing `Single` with `First` is not always feasible, as these two methods serve different purposes and cannot always be interchanged. Despite their distinct functionalities, there are instances where they can be swapped.
 
-![Wrong Assumptions](./WrongAssumption.jpg)
+<img src="./WrongAssumption.jpg" alt="WrongAssumption" style="margin:auto;">
 
 ---
 The `SingleOrDefault` method does not always traverse "all" items of an Enumerable. ❌
@@ -22,8 +22,6 @@ If we call `Single<T>` or `SingleOrDefault<T>` without passing any *Predicate*, 
  - If there are zero items, the default value of type **T** is returned.
  - If there is exactly one item, item **[0]** of the Enumerable is returned.
  - If there are more than one items, an error is thrown.
-
-<br>
 
 ```csharp
 public static TSource SingleOrDefault<TSource>(this IEnumerable<TSource> source)
@@ -67,8 +65,6 @@ When these methods are called with a Predicate, they traverse the Enumerable and
 - If no item matches the Predicate, the default value of **T** is returned.
 - If one item is found, the traversal continues. If another matching item is found, an **error** is thrown immediately. This second item could be the next one (1+) or any subsequent item (N+1).
 - If no additional matching items are found, the first matching item is returned.
-
-<br>
 
 ```csharp
 public static TSource SingleOrDefault<TSource>(

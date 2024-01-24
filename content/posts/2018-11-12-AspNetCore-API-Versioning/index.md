@@ -88,7 +88,7 @@ public void ConfigureServices(IServiceCollection services)
 
 With this change, you can no longer test your API through a browser, which is one downside to this approach. You'll need to use tools like Postman or CURL for sending a GET requests with custom headers:
 
-{{< customImg src="versioning.png" width="700px" >}}
+<img src="./versioning.png" width="700px" alt="Postman" style="margin:auto;">
 
 ----------
 
@@ -123,7 +123,7 @@ services.AddApiVersioning(opt =>
 
 After thing change, the response headers will look like this:
 
-{{< customImg src="deprecation.png" width="350px" >}}
+<img src="./deprecation.png" width="350px" alt="ResponseHeaders" style="margin:auto;">
 
 ----------
 

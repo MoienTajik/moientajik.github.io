@@ -20,7 +20,6 @@ Initially, we create a new ASP.NET Core API project and install the MediatR pack
 Install-Package MediatR.Extensions.Microsoft.DependencyInjection
 ```
 
-{{<linebreak>}}
 After installing, add this code to the ConfigureServices method in the Startup.cs file of your project to register the MediatR dependencies in your DI Container:
 
 ```csharp
@@ -35,7 +34,6 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-{{<linebreak>}}
 **\*** If you are using other DI Containers, you can register MediatR in your preferred container using the instructions from [this](https://github.com/jbogard/MediatR/wiki#setting-up) link.
 
 ----------
@@ -79,7 +77,6 @@ public class CustomerDto
 }
 ```
 
-{{<linebreak>}}
 Adding a customer is a **Command** because it adds a new record to the database and changes the **state** of the application. We create a new class named `CreateCustomerCommand`, inherit from IRequest, and set the return response type to `CustomerDto`:
 
 ```csharp
@@ -97,13 +94,11 @@ public class CreateCustomerCommand : IRequest<CustomerDto>
 }
 ```
 
-
-{{<linebreak>}}
 The `CreateCustomerCommand` specifies its requirements through the constructor. To create a customer, the minimum required information is the `Firstname` and `Lastname`, and after passing the necessary values to the constructor of this class, the values are immutable due to being get-only.
 
 Here, the concept of [immutability](https://www.yegor256.com/2014/06/09/objects-should-be-immutable.html) is fully observed.
 
-{{< customImg src="immutability.jpg" width="600" >}}
+<img src="./immutability.jpg" width="600px" alt="immutability" style="margin:auto;">
 
 ----------
 
@@ -159,7 +154,6 @@ public class DomainProfile : Profile
 }
 ```
 
-{{<linebreak>}}
 Finally, by injecting the `IMediator` interface into our controller and sending a POST request to this action, we issue the customer creation request through the `Send` method:
 
 ```csharp
@@ -171,12 +165,9 @@ public async Task<IActionResult> CreateCustomer([FromBody] CreateCustomerCommand
 }
 ```
 
-{{<linebreak>}}
 As you can see, here we have only sent the **request**, and the responsibility of finding the handler of this request is undertaken by the MediatR framework, and we have not directly called our handler anywhere ([Hollywood Principle: Don't Call Us, We Call You](http://matthewtmead.com/blog/hollywood-principle-dont-call-us-well-call-you-4/)).
+<img src="./Hollywood.jpg" width="400px" alt="HollywoodPrincipal" style="margin:auto;">
 
-{{< customImg src="Hollywood.jpg" width="300" >}}
-
-{{<linebreak>}}
 The implementation of a *Query* is exactly similar to a *Command*, and an example of it exists in the [repository](https://github.com/MoienTajik/MediatrTutorial) mentioned at the beginning of the article.
 In addition to the `Send` method, the IMediator interface has another method called `Publish`, which is responsible for raising **events**, which we will use in later articles.
 

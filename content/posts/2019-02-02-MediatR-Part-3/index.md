@@ -12,8 +12,7 @@ In the [previous post](https://moien.dev/posts/2019-01-27-mediatr-part-2), we ex
 
 ----------
 
-{{< customImg src="FluentValidation.jpg" width="270" >}}
-{{<linebreak>}}
+<img src="./FluentValidation.jpg" width="270px" alt="FluentValidation" style="margin:auto;"><br>
 
 Our Command, `CreateCustomerCommand`, lacks any validation for user input. Users can call this Command with any values they like. In this part, we'll add validation capabilities to our Commands using the [Fluent Validation](https://github.com/JeremySkinner/FluentValidation) library.
 
@@ -22,7 +21,6 @@ First, install the library using the following command:
 ```csharp
 Install-Package FluentValidation.AspNetCore
 ```
-{{<linebreak>}}
 
 After adding the library, register it in your DI Container:
 ```csharp
@@ -32,7 +30,6 @@ services.AddMvc()
     );
 ```
 
-{{<linebreak>}}
 Create a new class called `CreateCustomerCommandValidator` that inherits from Fluent Validation's `AbstractValidator` to define the validation logic for `CreateCustomerCommand`:
 ```csharp
 public class CreateCustomerCommandValidator : AbstractValidator<CreateCustomerCommand>
@@ -62,15 +59,13 @@ Error: 400 - Bad Request
 }
 ```
 
-{{<linebreak>}}
 **\*** **Note:** All superficial validations like non-empty values, date validation, email validation, etc., must be done **before** Commands are handled. If validation fails, we should not enter the Command's Handle method. ([Fail Fast Principle](https://enterprisecraftsmanship.com/2015/09/15/fail-fast-principle/))
 
 ----------
 
 ### Events
 
-{{< customImg src="PubSub.jpg" width="270" >}}
-{{<linebreak>}}
+<img src="./PubSub.jpg" width="270px" alt="PubSub" style="margin:auto;"><br>
 
 Suppose we want to send an email to a customer upon successful registration. Sending an email is not the responsibility of `CreateCustomerCommand`. Adding email-sending logic would violate the Single Responsibility Principle ([SRP](http://principles-wiki.net/principles:single_responsibility_principle)).
 
@@ -98,7 +93,6 @@ public class CustomerCreatedEvent : INotification
 }
 ```
 
-{{<linebreak>}}
 Next, write two handlers for this event. The first handler will be responsible for sending emails:
 
 ```csharp
@@ -112,7 +106,6 @@ public class CustomerCreatedEmailSenderHandler : INotificationHandler<CustomerCr
 }
 ```
 
-{{<linebreak>}}
 The second handler will log the newly registered customer information:
 
 ```csharp
@@ -134,7 +127,6 @@ public class CustomerCreatedLoggerHandler : INotificationHandler<CustomerCreated
 }
 ```
 
-{{<linebreak>}}
 Finally, you just need to modify the handle method inside `CreateCustomerCommandHandler` that we created in the [previous post](https://moien.dev/posts/2019-01-27-mediatr-part-2) and use the `Publish` method from `IMediator` interface to raise this event:
 
 ```csharp
@@ -168,7 +160,6 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
 }
 ```
 
-{{<linebreak>}}
 Run the application and set breakpoints on both NotificationHandlers. If you call `/api/customers` to create a new customer, you'll see both of your handlers get raised, and you'll see the customer information logged in the console using our log handler.
 ```csharp
 info: MediatrTutorial.Features.Customer.Events.CustomerCreated.CustomerCreatedLoggerHandler[0]
